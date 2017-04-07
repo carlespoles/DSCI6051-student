@@ -31,11 +31,12 @@ class TrainingVisualizerCallback(keras.callbacks.History):
         plt.show()
 
 
-def preprocess_img(img, IMG_SIZE):
+def preprocess_img(img, IMG_SIZE, norm):
     # Histogram normalization in y
-    hsv = color.rgb2hsv(img)
-    hsv[:, :, 2] = exposure.equalize_hist(hsv[:, :, 2])
-    img = color.hsv2rgb(hsv)
+    if norm:
+        hsv = color.rgb2hsv(img)
+        hsv[:, :, 2] = exposure.equalize_hist(hsv[:, :, 2])
+        img = color.hsv2rgb(hsv)
 
     # central scrop
     min_side = min(img.shape[:-1])
@@ -53,12 +54,12 @@ def preprocess_img(img, IMG_SIZE):
     return img
 
 
-def create_images_array(image_path, IMG_SIZE):
+def create_images_array(image_path, IMG_SIZE, norm):
     imgs = []
     dirPath = image_path
     fileList = os.listdir(dirPath)
     for fileName in fileList:
-        img = preprocess_img(io.imread(dirPath + '/' + fileName), IMG_SIZE)
+        img = preprocess_img(io.imread(dirPath + '/' + fileName), IMG_SIZE, norm)
         imgs.append(img)
 
     return np.array(imgs, dtype='float32')
