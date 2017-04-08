@@ -13,7 +13,7 @@ from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.optimizers import SGD
 from keras.utils import np_utils
-from keras.preprocessing.image import array_to_img, img_to_array
+from keras.preprocessing.image import load_img, img_to_array, array_to_img
 from keras.callbacks import LearningRateScheduler, ModelCheckpoint
 from skimage import io, color, exposure, transform
 from sklearn.metrics import confusion_matrix, roc_curve
@@ -62,22 +62,56 @@ def create_images_array(image_path, IMG_SIZE, norm):
         img = preprocess_img(io.imread(dirPath + '/' + fileName), IMG_SIZE, norm)
         imgs.append(img)
 
-    return np.array(imgs, dtype='float32')
+    return np.array(imgs, dtype='float32')/255.
 
 
-def cnn_model_baseline(IMG_SIZE):
+def normalize_images_array(image_path, IMG_SIZE):
+    imgs = []
+    dirPath = image_path
+    fileList = os.listdir(dirPath)
+    for fileName in fileList:
+        img = load_img(dirPath + '/' + fileName)
+        img_reshape = img.resize((IMG_SIZE, IMG_SIZE))
+        img_array = img_to_array(img_reshape)
+        imgs.append(img_array)
+
+    return np.array(imgs, dtype='float32')/255.
+
+
+def cnn_model_v_0(IMG_SIZE):
     global NUM_CLASSES
     NUM_CLASSES = 2
     model = Sequential()
-    model.add(Convolution2D(32, (3, 3), padding='same', input_shape=(3, IMG_SIZE, IMG_SIZE), activation='relu'))
+    model.add(Convolution2D(32, (3, 3), padding='same', input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
     model.add(Convolution2D(32, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
     model.add(Convolution2D(64, (3, 3), padding='same', activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
     model.add(Convolution2D(128, (3, 3), padding='same', activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
     model.add(Flatten())
     model.add(Dense(512, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(NUM_CLASSES, activation='softmax'))
+
+    return model
+
+
+def cnn_model_v_1(IMG_SIZE):
+    global NUM_CLASSES
+    NUM_CLASSES = 2
+    model = Sequential()
+    model.add(Convolution2D(32, (3, 3), padding='same', input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Convolution2D(32, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Convolution2D(64, (3, 3), padding='same', activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Flatten())
+    model.add(Dense(64, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(NUM_CLASSES, activation='softmax'))
 
