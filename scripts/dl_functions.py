@@ -32,29 +32,40 @@ class TrainingVisualizerCallback(keras.callbacks.History):
 
 
 def preprocess_img(img, IMG_SIZE, norm):
-    # Histogram normalization in y
+    """
+    This function normalizes the color of an image and
+    rescales it to the desired format. The color is rolled to axis 0.
+    We make optional to normalize color by passing boolen variable.
+    """
+    # Histogram normalization in y.
     if norm:
         hsv = color.rgb2hsv(img)
         hsv[:, :, 2] = exposure.equalize_hist(hsv[:, :, 2])
         img = color.hsv2rgb(hsv)
 
-    # central scrop
+    # Central scrop.
     min_side = min(img.shape[:-1])
     centre = img.shape[0]//2, img.shape[1]//2
     img = img[centre[0]-min_side//2:centre[0]+min_side//2,
               centre[1]-min_side//2:centre[1]+min_side//2,
               :]
 
-    # rescale to standard size
+    # Rescale to standard size.
     img = transform.resize(img, (IMG_SIZE, IMG_SIZE))
 
-    # roll color axis to axis 0
+    # Roll color axis to axis 0.
     img = np.rollaxis(img, -1)
 
     return img
 
 
 def create_images_array(image_path, IMG_SIZE, norm):
+    """
+    This function calls preprocess_img() to process all images in
+    a directory, returning an array of processed images ready to
+    fit a deep learning model. Note that the arrat is normalized as we
+    divide by 255.
+    """
     imgs = []
     dirPath = image_path
     fileList = os.listdir(dirPath)
@@ -66,6 +77,11 @@ def create_images_array(image_path, IMG_SIZE, norm):
 
 
 def normalize_images_array(image_path, IMG_SIZE):
+    """
+    This function is more appropiate to resize images and convert them to an
+    array by using keras.preprocessing methods. We return a normalize array
+    of images (by dividing by 255) ready to fit a deep learning model.
+    """
     imgs = []
     dirPath = image_path
     fileList = os.listdir(dirPath)
@@ -82,14 +98,14 @@ def cnn_model_v_0(IMG_SIZE):
     global NUM_CLASSES
     NUM_CLASSES = 2
     model = Sequential()
-    model.add(Convolution2D(32, (3, 3), padding='same', input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
+    model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
     model.add(Convolution2D(32, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
-    model.add(Convolution2D(64, (3, 3), padding='same', activation='relu'))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
-    model.add(Convolution2D(128, (3, 3), padding='same', activation='relu'))
+    model.add(Convolution2D(128, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
     model.add(Flatten())
@@ -104,14 +120,42 @@ def cnn_model_v_1(IMG_SIZE):
     global NUM_CLASSES
     NUM_CLASSES = 2
     model = Sequential()
-    model.add(Convolution2D(32, (3, 3), padding='same', input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
+    model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Convolution2D(32, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Convolution2D(64, (3, 3), padding='same', activation='relu'))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
     model.add(Dense(64, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(NUM_CLASSES, activation='softmax'))
+
+    return model
+
+
+def cnn_model_v_3(IMG_SIZE):
+    global NUM_CLASSES
+    NUM_CLASSES = 2
+    model = Sequential()
+    model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
+    model.add(Convolution2D(32, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(128, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(128, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(256, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Flatten())
+    model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(NUM_CLASSES, activation='softmax'))
 
