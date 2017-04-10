@@ -134,23 +134,18 @@ def cnn_model_v_1(IMG_SIZE):
     return model
 
 
-def cnn_model_v_3(IMG_SIZE):
+def cnn_model_v_2(IMG_SIZE):
     global NUM_CLASSES
     NUM_CLASSES = 2
     model = Sequential()
-    model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
-    model.add(Convolution2D(32, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.2))
+    model.add(Convolution2D(64, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3), activation='relu'))
     model.add(Convolution2D(64, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.2))
+    model.add(Convolution2D(128, (3, 3), activation='relu'))
     model.add(Convolution2D(128, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.2))
-    model.add(Convolution2D(128, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.2))
+    model.add(Convolution2D(256, (3, 3), activation='relu'))
+    model.add(Convolution2D(256, (3, 3), activation='relu'))
     model.add(Convolution2D(256, (3, 3), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
