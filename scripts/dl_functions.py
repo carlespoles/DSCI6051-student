@@ -266,6 +266,31 @@ def show_confusion_matrix(C, class_labels=['0', '1']):
     plt.show();
 
 
+def plot_confusion_matrix(y_true, y_pred):
+    """
+    The function takes the labels and predictions to create a colorful
+    confusion matrix. This is more indicated to multi-class problems.
+    """
+    cm_array = confusion_matrix(y_true, y_pred)
+    true_labels = np.unique(y_true)
+    pred_labels = np.unique(y_pred)
+    plt.imshow(cm_array[:-1, :-1], interpolation='nearest', cmap=plt.cm.Blues)
+    plt.title("Confusion matrix", fontsize=16)
+    cbar = plt.colorbar(fraction=0.046, pad=0.04)
+    cbar.set_label('Number of images', rotation=270, labelpad=30, fontsize=12)
+    xtick_marks = np.arange(len(true_labels))
+    ytick_marks = np.arange(len(pred_labels))
+    plt.xticks(xtick_marks, true_labels, rotation=90)
+    plt.yticks(ytick_marks, pred_labels)
+    plt.tight_layout()
+    plt.ylabel('True label', fontsize=14)
+    plt.xlabel('Predicted label', fontsize=14)
+    fig_size = plt.rcParams["figure.figsize"]
+    fig_size[0] = 12
+    fig_size[1] = 12
+    plt.rcParams["figure.figsize"] = fig_size
+
+
 def plot_roc(y_test, y_prediction, model_label, plot_title):
     """
     The function takes as parameters the test labels (observations),
