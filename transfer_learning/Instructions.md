@@ -3,8 +3,8 @@
 
   - [Setup in Google Storage](#set-up-in-google-storage).
   - [Execution of the script](#execution-of-the-script).
-    - [1. Image Preprocessing](##1-image-preprocessing-details)
-    - [2. Modeling: Training the model](##2-training-the-model)
+    - [1. Image Preprocessing](##1-image-preprocessing-details).
+    - [2. Modeling: Training the model](##2-training-and-monitoring-the-model).
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -127,11 +127,11 @@ Each image is processed to produce its feature representation (an *embedding*) w
 The reason this approach is so effective for bootstrapping new image classification is that these 'bottleneck'
 embeddings contain a lot of high-level feature information useful to InceptionV3 for its own image classification.
 
-Once the pre-processing has been completed, the embeddings can be found in the bucket (which is the `GCS_PATH`):
+Once the pre-processing has been completed, the embeddings can be found in the bucket (which is under `GCS_PATH/preproc`):
 
 ![Embeddings](images/embed.jpg)
 
-## 2. Training the model.
+## 2. Training and monitoring the model.
 
 Once pre-processing has been completed, the script will continue to run, this time to train the model.
 
@@ -154,9 +154,24 @@ The job can be monitored by looking at the logs here: <https://console.cloud.goo
 ![Monitor ML](images/log-0.jpg)
 ![Monitor ML](images/log-1.jpg)
 
+We also can monitor the accuracy of the training and evaluation sets:
 
+![Monitor ML](images/tut-4.jpg)
+![Monitor ML](images/tut-5.jpg)
+![Monitor ML](images/tut-6.jpg)
 
+Once the model has been trained, it will be saved in the step of the script.
 
+## 3. Saving the model.
+
+The next step of the script will save the model created previously:
+
+![View of script](images/shell-5.jpg)
+![Monitor ML](images/tut-7.jpg)
+
+The model can be found here: <https://console.cloud.google.com/mlengine/models?project=wellio-kadaif>
+![Monitor ML](images/log-2.jpg)
+![Monitor ML](images/log-3.jpg)
 
 #### 2.3 Monitor the training
 
