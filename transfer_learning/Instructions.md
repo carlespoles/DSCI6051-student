@@ -3,8 +3,9 @@
 
   - [Setup in Google Storage](#set-up-in-google-storage).
   - [Execution of the script](#execution-of-the-script).
-    - [1. Image Preprocessing](##1-image-preprocessing-details).
-    - [2. Modeling: Training the model](##2-training-and-monitoring-the-model).
+    - [1. Image preprocessing details](##1-image-preprocessing-details).
+    - [2. Training and monitoring the model](##2-training-and-monitoring-the-model).
+    - [3. Saving and versioning the model](##3-saving-and-versioning-the-model).
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -85,7 +86,7 @@ We need to set up some default values in the above script:
 
 ![View of script](images/shell-1.jpg)
 
-The script sends to the screen the `GCS_PATH` for convenience, and we should make not of it as will need it to reference it when launching `tensorboard`.
+The script sends to the screen the `GCS_PATH` for convenience, and we should make note of it as will need it to reference it when launching `tensorboard`.
 
 Note that since hardcode `VERSION_NAME`, if the script is run again to train a new model, it needs to be changed or it will throw an error.
 
@@ -120,7 +121,7 @@ Once pre-processing is completed, we will have two completed jobs.
 
 ## 1. Image preprocessing details.
 
-Preprocessing means that we extract an image features from the "bottleneck" layer which is the penultimate layer of the Inception network. This is achieved by loading the saved Inception model and its variable values into TensorFlow, and run each image through that model, which has been open-sourced by Google).
+Preprocessing means that we extract an image features from the "bottleneck" layer which is the penultimate layer of the Inception network. This is achieved by loading the saved Inception model and its variable values into TensorFlow, and run each image through that model, which has been open-sourced by Google.
 
 Each image is processed to produce its feature representation (an *embedding*) which is a k-dimensional vector of floats (in our case, 2,048 dimensions). The preprocessing includes converting the image format, resizing images, and running the converted image through a pre-trained model to get the embeddings.
 
@@ -160,14 +161,22 @@ We also can monitor the accuracy of the training and evaluation sets:
 ![Monitor ML](images/tut-5.jpg)
 ![Monitor ML](images/tut-6.jpg)
 
-Once the model has been trained, it will be saved in the step of the script.
+Once the model has been trained, it will be saved in the next step of the script.
 
-## 3. Saving the model.
+## 3. Saving and versioning the model.
 
 The next step of the script will save the model created previously:
 
 ![View of script](images/shell-5.jpg)
 ![Monitor ML](images/tut-7.jpg)
+
+Once completed, the script will create a version of it, indicating where it's deployed (`$GCS_PATH/training/model`):
+
+![View of script](images/shell-6.jpg)
+
+Next, the created version is set as the default one:
+
+![View of script](images/shell-7.jpg)
 
 The model can be found here: <https://console.cloud.google.com/mlengine/models?project=wellio-kadaif>
 ![Monitor ML](images/log-2.jpg)
