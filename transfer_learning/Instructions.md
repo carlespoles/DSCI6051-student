@@ -81,7 +81,7 @@ As mentioned at the beginning, we execute `./tasty_images.sh` at the command lin
 
 Note that we need to `source activate MY_ENVIRONMENT` first. In this project `MY_ENVIRONMENT` is `wellio`.
 
-![Run the shell](images/shell-1.jpg)
+![Run the shell](images/tut-1.jpg)
 
 
 
