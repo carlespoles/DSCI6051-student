@@ -46,9 +46,19 @@ We will also need to install Tensorflow.
 
 The images we downloaded need to be stored in a bucket:
 
+For this project, the bucket is `gs://wellio-kadaif-tasty-images-project-images`
+
 ![For images with the label 'ok' (or 'tasty')](images/bucket-1.jpg)
 
 ![For images with the label 'nok' (or 'non-tasty')](images/bucket-2.jpg)
+
+All required files to pre-process images can be found on the `input_files` folder.
+
+We need to create a `.csv` file with the path to each image (`all_images_path.csv`), as well as the it's corresponding label. Here is how the file looks like:
+
+![Path for images with the label 'ok' (or 'tasty')](images/path-1.jpg)
+
+![Path for images with the label 'nok' (or 'non-tasty')](images/path-2.jpg)
 
 ## The "tasty/not-tasty" image classification task
 
