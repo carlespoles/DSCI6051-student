@@ -3,6 +3,8 @@
 
   - [Setup in Google Storage](#set-up-in-google-storage).
   - [Execution of the script](#execution-of-the-script).
+    - [1. Image Preprocessing](#1-image-preprocessing-details)
+    - [2. Modeling: Training the model](#2-modeling-training-the-model)
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -97,6 +99,8 @@ As soon as the script starts to run, it will start by pre-processing of the imag
 
 Dataflow can be monitored here <https://console.cloud.google.com/dataflow?project=wellio-kadaif>
 
+and by clicking on the highlighted square, we can see the details of the job:
+
 ![Monitor dataflow](images/flow-1.jpg)
 ![Monitor dataflow](images/flow-2.jpg)
 ![Monitor dataflow](images/flow-3.jpg)
@@ -107,35 +111,14 @@ Once pre-processing is completed, we will have two completed jobs.
 
 ![Monitor dataflow](images/flow-4.jpg)
 
-## The "tasty/not-tasty" image classification task
+### 1. Image preprocessing details.
 
-Just for fun, we'll show how we can train our NN to decide whether images are of 'huggable' or 'not huggable' things.
+Preprocessing means that we extract an image features from the "bottleneck" layer which is the penultimate layer of the Inception network. This is achieved by loading the saved Inception model and its variable values into TensorFlow, and run each image through that model, which has been open-sourced by Google).
 
-So, we'll use a training set of images that have been sorted into two categories -- whether or not one would want to hug the object in the photo.
-(Thanks to Julia Ferraioli for this dataset).
-
-The 'hugs' does not have a large number of images, but as we will see, prediction on new images still works surprisingly well.  This shows the power of 'bootstrapping' the pre-trained Inception model.
-
-(This directory also includes some scripts that support training on a larger 'flowers classification' dataset too.)
-
-### 1. Image Preprocessing
-
-We start with a set of labeled images in a Google Cloud Storage bucket, and preprocess them to extract the image
-features from the "bottleneck" layer -- essentially, the penultimate layer -- of the Inception network. To do this, we
-load the saved Inception model and its variable values into TensorFlow, and run each image through that model. (This
-model has been open-sourced by Google).
-
-More specifically, we process each image to produce its feature representation (also known as an *embedding*) in the
-form of a k-dimensional vector of floats (in our case, 2,048 dimensions). The preprocessing includes converting the
-image format, resizing images, and running the converted image through a pre-trained model to get the embeddings.
+Each image is processed to produce its feature representation (an *embedding*) which is a k-dimensional vector of floats (in our case, 2,048 dimensions). The preprocessing includes converting the image format, resizing images, and running the converted image through a pre-trained model to get the embeddings.
 
 The reason this approach is so effective for bootstrapping new image classification is that these 'bottleneck'
-embeddings contain a lot of high-level feature information useful to Inception for its own image classification.
-
-Although processing images in this manner can be reasonably expensive, each image can be processed independently and in
-parallel, making this task a great candidate for Cloud Dataflow.
-
-**Important:** If you have not already, makes sure to follow [these instructions](https://github.com/amygdala/tensorflow-workshop/blob/master/TLDR_CLOUD_INSTALL.md#12-enable-the-necessary-apis) to enable the Cloud Dataflow API.
+embeddings contain a lot of high-level feature information useful to InceptionV3 for its own image classification.
 
 #### 1.1 Deploy the preprocessing job to Cloud Dataflow
 
