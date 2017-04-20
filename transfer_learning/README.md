@@ -12,9 +12,6 @@ Then, you may follow the instructions in sample.sh.
 
 This directory contains an of transfer learning using the "Inception V3" image classification model.
 
-This example shows how to use Cloud Dataflow (Apache Beam) to do image preprocessing, then train and serve a model on Cloud ML. It supports distributed training on Cloud ML. It is based on the [example here](https://cloud.google.com/blog/big-data/2016/12/how-to-classify-images-with-tensorflow-using-google-cloud-machine-learning-and-cloud-dataflow)<sup>1</sup>
-sfd [https://cloud.google.com/blog/big-data/2016/12/how-to-classify-images-with-tensorflow-using-google-cloud-machine-learning-and-cloud-dataflow], with some [additional modifications] (https://github.com/amygdala/tensorflow-workshop/tree/master/workshop_sections/transfer_learning) to adapt it to the food image set, and a prediction web server that demos how to use the Cloud ML API for prediction once your trained model is serving.
-
-Note that above<sup>1</sup> has many libraries deprecated, and I have refactored them using the most recent example from GoogleCloudPlatform (https://github.com/GoogleCloudPlatform/cloudml-samples/tree/master/flowers)
+This example shows how to use Cloud Dataflow (Apache Beam) to do image preprocessing, then train and serve a model on Cloud ML. It supports distributed training on Cloud ML. It is based on the [example here](https://cloud.google.com/blog/big-data/2016/12/how-to-classify-images-with-tensorflow-using-google-cloud-machine-learning-and-cloud-dataflow)<sup>1</sup> and [adapting the code from this repository](https://github.com/amygdala/tensorflow-workshop/tree/master/workshop_sections/transfer_learning) to this project needs. However, some API are deprecated from<sup>1</sup>, and I have refactored them using the most [recent example from GoogleCloudPlatform](https://github.com/GoogleCloudPlatform/cloudml-samples/tree/master/flowers).
 
 It can be easily adapted for any image classification problem using "Inception V3".
