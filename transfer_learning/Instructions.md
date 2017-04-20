@@ -26,7 +26,7 @@ classes of images: your own classes.
 We'll see that our new top layer does not need to be very complex, and that we typically don't need much data or much
 training of this new model, to get good results for our new image classifications.
 
-![Transfer learning](./image-classification-3-1.png)
+![Transfer learning](images/image-classification-3-1.png)
 
 In addition to the transfer learning, this example shows off several other interesting aspects of TensorFlow and Cloud
 ML. It shows how to use
