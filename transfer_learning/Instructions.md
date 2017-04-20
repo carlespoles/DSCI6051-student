@@ -1,5 +1,7 @@
 
-# Classifying images using *transfer learning*
+# Classifying images using *transfer learning*.
+
+  - [Setup in Google Storage](###set-up-in-google-storage)
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -31,6 +33,16 @@ to do image preprocessing -- the Beam pipeline uses Inception v3 to generate the
 This project also includes a tiny "prediction web server" using Flask that uses **Cloud ML API for prediction** once the trained model is serving.
 
 To run the process end to end, we need to run this shell script on the command line: `./tasty_images.sh`
+
+As a **reminder**, we need to first create an anaconda environment with python 2.7.
+
+Then, after creating the environment, we need to setup Google Cloud Platform SDK:
+
+Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and follow the instructions for ‘interactive installer’.
+
+We will also need to install Tensorflow.
+
+## Set up in Google Storage.
 
 ## The "tasty/not-tasty" image classification task
 
