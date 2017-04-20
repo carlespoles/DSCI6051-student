@@ -79,6 +79,10 @@ Finally, we load `train_images_path_set.csv`, `eval_images_path_set.csv` and `di
 
 As mentioned at the beginning, we execute `./tasty_images.sh` at the command line. We need to make sure that we have changed the file permissions to `chmod 755`.
 
+We need to set up some default values in the above script:
+
+![View of script](images/shell-1.jpg)
+
 Note that we need to `source activate MY_ENVIRONMENT` first. In this project `MY_ENVIRONMENT` is `wellio`.
 
 ![Run the shell](images/tut-1.jpg)
