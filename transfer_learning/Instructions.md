@@ -118,7 +118,7 @@ Once pre-processing is completed, we will have two completed jobs.
 
 ![Monitor dataflow](images/flow-4.jpg)
 
-### 1. Image preprocessing details.
+## 1. Image preprocessing details.
 
 Preprocessing means that we extract an image features from the "bottleneck" layer which is the penultimate layer of the Inception network. This is achieved by loading the saved Inception model and its variable values into TensorFlow, and run each image through that model, which has been open-sourced by Google).
 
@@ -131,24 +131,30 @@ Once the pre-processing has been completed, the embeddings can be found in the b
 
 ![Embeddings](images/embed.jpg)
 
-### 2. Training the model.
+## 2. Training the model.
 
 Once pre-processing has been completed, the script will continue to run, this time to train the model.
 
 ![Run the shell](images/tut-3.jpg)
 ![View of script](images/shell-4.jpg)
 
-Note that in the folder `trainer`, the `task.py` will create the model, and that the `config.yaml` file contains the details of the GPUs to use (only available in Google Cloud `east` region as of the time of this writing).
+Note that in the folder `trainer`, `task.py` will create the model, and that the `config.yaml` file contains the details of the GPUs to use (only available in Google Cloud `east` region as of the time of this writing).
 
 The `.yaml` file has a link to all possible machines available to run this part of the script.
 
 The neural network will comprise a single fully- connected layer with *RELU* activations and with one output for each label in the dictionary (`dict.txt`) to replace the original output layer.
 
 The final output is computed using the [softmax](https://en.wikipedia.org/wiki/Softmax_function) function. In the
-training stages, we're using the [*dropout*](https://en.wikipedia.org/wiki/Dropout_(neural_networks)) technique, which
-randomly ignores a subset of input weights to prevent over-fitting to the training dataset.
+training stages, we use [dropout](https://en.wikipedia.org/wiki/Dropout_(neural_networks)) to randomly ignore a subset of input weights to prevent over-fitting to the training dataset.
 
 The script will output a summary and a model checkpoint information under `$GCS_PATH/training`.
+
+The job can be monitored by looking at the logs here: <https://console.cloud.google.com/mlengine/jobs?project=wellio-kadaif>
+
+![Monitor ML](images/log-0.jpg)
+![Monitor ML](images/log-1.jpg)
+
+
 
 
 
