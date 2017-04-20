@@ -1,7 +1,7 @@
 
 # Classifying images using *transfer learning*.
 
-  - [Setup in Google Storage](###set-up-in-google-storage)
+  - [Setup in Google Storage](###set-up-in-google-storage).
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
