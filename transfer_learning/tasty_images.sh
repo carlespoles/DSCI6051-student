@@ -17,13 +17,12 @@
 # first time with the service, start here:
 # https://cloud.google.com/ml/docs/how-tos/getting-set-up
 
-# Now that we are set up, we can start processing some flowers images.
+# Now that we are set up, we can start processing some food images.
 declare -r PROJECT=$(gcloud config list project --format "value(core.project)")
 declare -r JOB_ID="tasty_images_${USER}_$(date +%Y%m%d_%H%M%S)"
 declare -r BUCKET="gs://wellio-kadaif-tasty-images-project-images"
 declare -r GCS_PATH="${BUCKET}/${USER}/${JOB_ID}"
 declare -r DICT_FILE=gs://wellio-kadaif-tasty-images-project-images/dict.txt
-
 declare -r MODEL_NAME=tasty_images
 declare -r VERSION_NAME=v1
 
@@ -52,7 +51,7 @@ python trainer/preprocess.py \
   --num_workers 100 \
   --cloud
 
-# Training on CloudML is quick after preprocessing.  If you ran the above
+# Training on CloudML is quick after preprocessing. If you ran the above
 # commands asynchronously, make sure they have completed before calling this one.
 gcloud ml-engine jobs submit training "$JOB_ID" \
   --stream-logs \
@@ -84,7 +83,7 @@ gcloud ml-engine versions create "$VERSION_NAME" \
 # service from one version to another with a single gcloud command.
 gcloud ml-engine versions set-default "$VERSION_NAME" --model "$MODEL_NAME"
 
-# Finally, download a daisy and so we can test online prediction.
+# Finally, download a sample image and so we can test online prediction.
 gsutil cp \
   gs://wellio-kadaif-tasty-images-project-images/predict_images/trump_1.jpg \
   donald_trump.jpg

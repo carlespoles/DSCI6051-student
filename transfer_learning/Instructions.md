@@ -2,6 +2,7 @@
 # Classifying images using *transfer learning*.
 
   - [Setup in Google Storage](#set-up-in-google-storage).
+  - [Execution of the script](#execution-of-the-script).
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -42,6 +43,8 @@ Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and fol
 
 We will also need to install Tensorflow.
 
+Below, all steps are described step by step.
+
 ## Set up in Google Storage.
 
 The images we downloaded need to be stored in a bucket:
@@ -70,7 +73,17 @@ Finally, we create a `dict.txt` file, which is a dictionary of the labels we req
 
 Finally, we load `train_images_path_set.csv`, `eval_images_path_set.csv` and `dict.txt` to the same bucket:
 
-![All files uploaded)](images/bucket-3.jpg)
+![All files uploaded](images/bucket-3.jpg)
+
+## Execution of the script.
+
+As mentioned at the beginning, we execute `./tasty_images.sh` at the command line. We need to make sure that we have changed the file permissions to `chmod 755`.
+
+Note that we need to `source activate MY_ENVIRONMENT` first. In this project `MY_ENVIRONMENT` is `wellio`.
+
+![Run the shell](images/shell-1.jpg)
+
+
 
 ## The "tasty/not-tasty" image classification task
 
