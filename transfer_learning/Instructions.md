@@ -91,9 +91,21 @@ As mentioned at the beginning, we execute `./tasty_images.sh` at the command lin
 
 ![Run the shell](images/tut-1.jpg)
 
+Note that we specified `--num-workers` to be `100` to get more nodes to process the job.
+
 As soon as the script starts to run, it will start by pre-processing of the images specified on the evaluation `.csv` images using Google Dataflow.
 
-Dataflow can be monitored <https://console.cloud.google.com/dataflow?project=wellio-kadaif>
+Dataflow can be monitored here <https://console.cloud.google.com/dataflow?project=wellio-kadaif>
+
+![Monitor dataflow](images/flow-1.jpg)
+![Monitor dataflow](images/flow-2.jpg)
+![Monitor dataflow](images/flow-3.jpg)
+
+As soon as the evaluation set pre-processing is completed, a new dataflow job starts for the training set.
+
+Once pre-processing is completed, we will have two completed jobs.
+
+![Monitor dataflow](images/flow-4.jpg)
 
 ## The "tasty/not-tasty" image classification task
 
