@@ -1,7 +1,7 @@
 
-# Classifying your own images using *transfer learning*
+# Classifying images using *transfer learning*
 
-  - [The "hugs/not-hugs" image classification task](#the-hugsnot-hugs-image-classification-task)
+  - [The "tasty/not-tasty" image classification task](### The "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
       - [1.1 Deploy the preprocessing job to Cloud Dataflow](#11-deploy-the-preprocessing-job-to-cloud-dataflow)
     - [2. Modeling: Training the classifier](#2-modeling-training-the-classifier)
@@ -13,33 +13,26 @@
       - [3.2 Prediction using the Cloud ML API: A prediction web server](#32-prediction-using-the-cloud-ml-api-a-prediction-web-server)
   - [Appendix: Running training locally](#appendix-running-training-locally)
 
-The [Google Vision API](https://cloud.google.com/vision/) is great for identifying labels, or categories, for a given
-image. However, sometimes you want to further classify your own images, in more specialized categories that the Google
-Vision API hasn't been trained on.
+Using [Google Vision API](https://cloud.google.com/vision/) is a good resource to identify labels, or categories, for a given image. The problem can arise when we need to further classify your own images, in more specialized categories that the Google Vision API hasn't been trained on.
 
-This lab shows how we can use an existing NN model to do this, via *transfer learning* -- effectively bootstrapping an
-existing model to reduce the effort needed to learn something new.
+This project shows how an existing neural network can be used to accomplish the above task using *transfer learning* which bootstraps an existing model to reduce the effort needed to learn something new.
 
-Specifically, we will take an 'Inception v3' architecture model trained to classify images against 1000 different 'ImageNet' categories, and using its penultimate "bottleneck" layer, train a new top layer that can recognize other
-classes of images: your own classes.
+The 'Inception v3' architecture model trained to classify images against 1000 different 'ImageNet' categories, and using its penultimate "bottleneck" layer, is used to train train a new top layer that can recognize other classes of images, like "tasty" or "not-tasty" in this project.
 
-We'll see that our new top layer does not need to be very complex, and that we typically don't need much data or much
+The new top layer does not need to be very complex, and that we typically don't need much data or much
 training of this new model, to get good results for our new image classifications.
 
 ![Transfer learning](images/image-classification-3-1.png)
 
-In addition to the transfer learning, this example shows off several other interesting aspects of TensorFlow and Cloud
-ML. It shows how to use
+Besides transfer learning, we show how to use other aspects of TensorFlow and Cloud ML. It shows how to use
 [Cloud Dataflow](https://cloud.google.com/dataflow/) ([Apache Beam](https://beam.apache.org/))
-to do image preprocessing -- the Beam pipeline uses Inception v3 to generate the inputs to the new 'top layer' that we will train -- and how to save those preprocessing results in [TFRecords](https://www.tensorflow.org/api_docs/python/python_io/) for consumption by the training loop.
+to do image preprocessing -- the Beam pipeline uses Inception v3 to generate the inputs to the new 'top layer' that we will train and will use the preprocessing results (TFRecords) to be consumed during training.
 
-The example also includes a little "prediction web server" that shows how you can
-**use the Cloud ML API for prediction** once your trained model is serving.
+This project also includes a tiny "prediction web server" using Flask that uses **Cloud ML API for prediction** once the trained model is serving.
 
-(This example is based on the example
-[here](https://github.com/GoogleCloudPlatform/cloudml-samples/tree/master/flowers), but with a number of additional modifications).
+To run the process end to end, we need to run this shell script on the command line: `./tasty_images.sh`
 
-## The "hugs/not-hugs" image classification task
+## The "tasty/not-tasty" image classification task
 
 Just for fun, we'll show how we can train our NN to decide whether images are of 'huggable' or 'not huggable' things.
 
