@@ -1,7 +1,7 @@
 
 # Classifying images using *transfer learning*
 
-  - [The "tasty/not-tasty" image classification task](### The "tasty/not-tasty" image classification task)
+  - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
       - [1.1 Deploy the preprocessing job to Cloud Dataflow](#11-deploy-the-preprocessing-job-to-cloud-dataflow)
     - [2. Modeling: Training the classifier](#2-modeling-training-the-classifier)
