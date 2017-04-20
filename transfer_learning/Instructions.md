@@ -68,6 +68,10 @@ Finally, we create a `dict.txt` file, which is a dictionary of the labels we req
 
 ![Dictionary labels file](images/labels.jpg)
 
+Finally, we load `train_images_path_set.csv`, `eval_images_path_set.csv` and `dict.txt` to the same bucket:
+
+![All files uploaded)](images/bucket-3.jpg)
+
 ## The "tasty/not-tasty" image classification task
 
 Just for fun, we'll show how we can train our NN to decide whether images are of 'huggable' or 'not huggable' things.
