@@ -16,4 +16,4 @@ This example shows how to use Cloud Dataflow (Apache Beam) to do image preproces
 
 It can be easily modified and adapted for any image classification problems with different images using "Inception V3". A prediction web server it's also included that demos how to use the Cloud ML API for prediction once your trained model is serving.
 
-Detailed [instructions on how to run this project are found here](instructions.md)
+Detailed [instructions on how to run this project are found here](Instructions.md).
