@@ -1,14 +1,14 @@
-Food images: Image-based transfer learning on Cloud ML
+Food images classification: Image-based transfer learning on Cloud ML
 --------------------------------------------------
 
 To run this example, first follow instructions for [setting up your environment](https://cloud.google.com/ml/docs/how-tos/getting-set-up).
 
-Also, we use Apache Beam (running on Cloud Dataflow) and PIL to preprocess the images into embeddings, so make sure to install the required packages:
+It uses Apache Beam (running on Cloud Dataflow) and PIL to preprocess the images into embeddings, so make sure to install the required packages:
 ```
 pip install -r requirements.txt
 ```
 
-Then, you may follow the instructions in sample.sh.
+Then, you may follow the instructions in `tasty_images.sh`.
 
 This directory contains an of transfer learning using the "Inception V3" image classification model.
 
