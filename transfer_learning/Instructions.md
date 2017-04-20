@@ -52,13 +52,21 @@ For this project, the bucket is `gs://wellio-kadaif-tasty-images-project-images`
 
 ![For images with the label 'nok' (or 'non-tasty')](images/bucket-2.jpg)
 
-All required files to pre-process images can be found on the `input_files` folder.
+**All required files to pre-process images can be found on the `input_files` folder.**
 
 We need to create a `.csv` file with the path to each image (`all_images_path.csv`), as well as the it's corresponding label. Here is how the file looks like:
 
 ![Path for images with the label 'ok' (or 'tasty')](images/path-1.jpg)
 
 ![Path for images with the label 'nok' (or 'non-tasty')](images/path-2.jpg)
+
+From the previous `.csv` file we create a training and validation `.csv` files, using a 90/10 percent split and randomly assigning images to each set (training/validation).
+
+The files are called respectively `train_images_path_set.csv`and `eval_images_path_set.csv`.
+
+Finally, we create a `dict.txt` file, which is a dictionary of the labels we require in our project:
+
+![Dictionary labels file](images/labels.jpg)
 
 ## The "tasty/not-tasty" image classification task
 
