@@ -44,6 +44,12 @@ We will also need to install Tensorflow.
 
 ## Set up in Google Storage.
 
+The images we downloaded need to be stored in a bucket:
+
+![For images with the label 'ok' (or 'tasty')](images/bucket-1.jpg)
+
+![For images with the label 'nok' (or 'non-tasty')](images/bucket-2.jpg)
+
 ## The "tasty/not-tasty" image classification task
 
 Just for fun, we'll show how we can train our NN to decide whether images are of 'huggable' or 'not huggable' things.
