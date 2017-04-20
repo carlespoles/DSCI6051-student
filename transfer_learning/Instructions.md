@@ -41,7 +41,7 @@ As a **reminder**, we need to first create an anaconda environment with python 2
 
 Then, after creating the environment, we need to setup Google Cloud Platform SDK:
 
-Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and follow the instructions for ‘interactive installer’.
+Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and follow the instructions for `interactive installer`.
 
 We will also need to install Tensorflow.
 
