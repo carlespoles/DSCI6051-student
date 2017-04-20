@@ -3,8 +3,8 @@
 
   - [Setup in Google Storage](#set-up-in-google-storage).
   - [Execution of the script](#execution-of-the-script).
-    - [1. Image Preprocessing](#1-image-preprocessing-details)
-    - [2. Modeling: Training the model](#2-modeling-training-the-model)
+    - [1. Image Preprocessing](##1-image-preprocessing-details)
+    - [2. Modeling: Training the model](##2-training-the-model)
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -22,7 +22,7 @@ Using [Google Vision API](https://cloud.google.com/vision/) is a good resource t
 
 This project shows how an existing neural network can be used to accomplish the above task using *transfer learning* which bootstraps an existing model to reduce the effort needed to learn something new.
 
-The 'Inception v3' architecture model trained to classify images against 1000 different 'ImageNet' categories, and using its penultimate "bottleneck" layer, is used to train train a new top layer that can recognize other classes of images, like "tasty" or "not-tasty" in this project.
+The 'Inception v3' architecture model trained to classify images against 1,000 different 'ImageNet' categories, and using its penultimate "bottleneck" layer, is used to train train a new top layer that can recognize other classes of images, like "tasty" or "not-tasty" in this project.
 
 The new top layer does not need to be very complex, and that we typically don't need much data or much
 training of this new model, to get good results for our new image classifications.
@@ -45,7 +45,7 @@ Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and fol
 
 We will also need to install Tensorflow.
 
-Below, all steps are described step by step.
+Below, all steps executed in the script are described step by step.
 
 ## Set up in Google Storage.
 
@@ -85,6 +85,8 @@ We need to set up some default values in the above script:
 
 ![View of script](images/shell-1.jpg)
 
+The script sends to the screen the `GCS_PATH` for convenience, and we should make not of it as will need it to reference it when launching `tensorboard`.
+
 Note that since hardcode `VERSION_NAME`, if the script is run again to train a new model, it needs to be changed or it will throw an error.
 
 Before start running the script, we need to `source activate MY_ENVIRONMENT` first. In this project `MY_ENVIRONMENT` is `wellio`.
@@ -93,9 +95,11 @@ As mentioned at the beginning, we execute `./tasty_images.sh` at the command lin
 
 ![Run the shell](images/tut-1.jpg)
 
-Note that we specified `--num-workers` to be `100` to get more nodes to process the job.
+Note that we specified `--num-workers` to be `100` to get more nodes to process the job. If not specified, it's defaulted to 10 workers.
 
-As soon as the script starts to run, it will start by pre-processing of the images specified on the evaluation `.csv` images using Google Dataflow.
+As soon as the script starts to run, it will start by pre-processing of the images specified on the evaluation `.csv` set of images using Google Dataflow.
+
+![View of script](images/shell-2.jpg)
 
 Dataflow can be monitored here <https://console.cloud.google.com/dataflow?project=wellio-kadaif>
 
@@ -106,6 +110,9 @@ and by clicking on the highlighted square, we can see the details of the job:
 ![Monitor dataflow](images/flow-3.jpg)
 
 As soon as the evaluation set pre-processing is completed, a new dataflow job starts for the training set.
+
+![Run the shell](images/tut-2.jpg)
+![View of script](images/shell-3.jpg)
 
 Once pre-processing is completed, we will have two completed jobs.
 
@@ -120,76 +127,30 @@ Each image is processed to produce its feature representation (an *embedding*) w
 The reason this approach is so effective for bootstrapping new image classification is that these 'bottleneck'
 embeddings contain a lot of high-level feature information useful to InceptionV3 for its own image classification.
 
-#### 1.1 Deploy the preprocessing job to Cloud Dataflow
+Once the pre-processing has been completed, the embeddings can be found in the bucket (which is the `GCS_PATH`):
 
-We need to run preprocessing for both our training and evaluation images.  We've defined a script, `hugs_preproc.sh`,
-to do this.
+![Embeddings](images/embed.jpg)
 
-First, set the `BUCKET` variable to point to your GCS bucket (replacing `your-bucket-name` with the actual name):
+### 2. Training the model.
 
-```shell
-BUCKET=gs://your-bucket-name
-```
+Once pre-processing has been completed, the script will continue to run, this time to train the model.
 
-You may need to change file permissions to allow execution:
-```
-chmod +755 *.sh
-```
+![Run the shell](images/tut-3.jpg)
+![View of script](images/shell-4.jpg)
 
-Then, run the pre-processing script. The script is already set up with links to the 'hugs' image data. The script
-will launch two non-blocking Cloud Dataflow jobs to do the preprocessing for the eval and training datasets. By
-default it only uses 3 workers for each job, but you can change this if you have larger quota.
+Note that in the folder `trainer`, the `task.py` will create the model, and that the `config.yaml` file contains the details of the GPUs to use (only available in Google Cloud `east` region as of the time of this writing).
 
-(Setting the `USER` environment variable allows Dataflow to distinguish multiple user's jobs.)
+The `.yaml` file has a link to all possible machines available to run this part of the script.
 
-```shell
-USER=xxx ./hugs_preproc.sh $BUCKET
-```
+The neural network will comprise a single fully- connected layer with *RELU* activations and with one output for each label in the dictionary (`dict.txt`) to replace the original output layer.
 
-This script will generate a timestamp-based `GCS_PATH`, that it will display in STDOUT.
-The pipelines will write the generated embeds into
-[TFRecords files containing tf.train.Example protocol buffers](https://www.tensorflow.org/how_tos/reading_data/), under `$GCS_PATH/preproc`.
-
-You can see your pipeline jobs running in the
-Dataflow panel of the [Cloud console](https://console.cloud.google.com/dataflow).
-Before you use these generated embeds, you'll want to make sure that the Dataflow jobs have finished.
-
-
-### 2. Modeling: Training the classifier
-
-Once we've preprocessed our data, and have the generated image embeds,
-we can then train a simple classifier. The network will comprise a single fully-
-connected layer with *RELU* activations and with one output for each label in the dictionary to replace the original
-output layer.
 The final output is computed using the [softmax](https://en.wikipedia.org/wiki/Softmax_function) function. In the
 training stages, we're using the [*dropout*](https://en.wikipedia.org/wiki/Dropout_(neural_networks)) technique, which
 randomly ignores a subset of input weights to prevent over-fitting to the training dataset.
 
-#### 2.1 For the workshop, use pre-generated TFRecords for training
+The script will output a summary and a model checkpoint information under `$GCS_PATH/training`.
 
-Because we have limited workshop time, we've saved a set of generated
-[TFRecords]([TFRecords](https://www.tensorflow.org/api_docs/python/python_io/)).
-If you didn't do this during installation, copy them now to your own bucket as follows.
 
-Set the `BUCKET` variable to point to your GCS bucket (replacing `your-bucket-name` with the actual name), then copy the records to your bucket.  Then, set the GCS_PATH variable to the newly copied GCS subfolder:
-
-```shell
-BUCKET=gs://your-bucket-name
-gsutil cp -r gs://tf-ml-workshop/transfer_learning/hugs_preproc_tfrecords $BUCKET
-GCS_PATH=$BUCKET/hugs_preproc_tfrecords
-```
-
-(As indicated above, with more time, you could wait for your Dataflow preprocessing jobs to finish running, then point to your own generated image embeds instead).
-
-#### 2.2 Run the training script
-
-Now, using the value of `GCS_PATH` that you set above, run your training job in the cloud:
-
-```shell
-./hugs_train.sh $BUCKET $GCS_PATH
-```
-
-This script will output summary and model checkpoint information under `$GCS_PATH/training`.
 
 #### 2.3 Monitor the training
 
