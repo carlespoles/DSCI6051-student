@@ -18,4 +18,15 @@ This can be found in notebook `2-tasty-images-download-images.ipynb`.
 -----------------------------------------------------------
 This functionality has not been used for the project, but it can be useful and handy if required.
 
-This can be found on the notebook `3-tasty-images-create-train-test-split-images.ipynb`.
+This can be found in the notebook `3-tasty-images-create-train-test-split-images.ipynb`.
+
+4 - Images pre-processing.
+--------------------------
+Images come on different sizes, mostly 640 pixels wide and 480 pixels tall. We resize them to a desired size and use `keras.preprocessing.image` to convert them into tensors using a custom function dl_functions.`normalize_images_array`
+found in the script `dl_functions.py` in the `scripts` folder.
+
+The sizes used are 25, 50 and 100. The created data sets, ready to train a model, will be saved as pickle files and then stored into Google Cloud Storage as well.
+
+Note that due to lack of enough computing resources, I was not able to pre-process the images to a bigger size (i.e 150 and bigger).
+
+This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
