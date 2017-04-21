@@ -190,7 +190,11 @@ In this final step, we create a prediction locally, not in the cloud.
 
 We download an image from a bucket, which will be saved in the directory of this project.
 
+![View of script](images/shell-8.jpg)
+
 Since the image is passed via JSON, we have to encode the JPEG string first:
+
+![View of script](images/shell-9.jpg)
 
 `python -c 'import base64, sys, json; img = base64.b64encode(open(sys.argv[1], "rb").read()); print json.dumps({"key":"0", "image_bytes": {"b64": img}})' donald_trump.jpg &> request.json`
 
@@ -204,25 +208,14 @@ The prediction index (e.g. '1') corresponds to the label at that index in the 'l
 
 So, that means that index 0 is the 'hugs' label, and index 1 is 'not-hugs'. Therefore, the prediction above indicates that the hedgehog is 'not-hugs', with score 0.9999591112136841.
 
-![View of script](images/shell-8.jpg)
+
 ![Monitor ML](images/tut-9.jpg)
 
-![View of script](images/shell-9.jpg)
+
 
 ![View of script](images/shell-10.jpg)
 
-Once completed, the script will create a version of it, indicating where it's deployed (`$GCS_PATH/training/model`):
 
-![View of script](images/shell-6.jpg)
-
-Next, the created version is set as the default one:
-
-![View of script](images/shell-7.jpg)
-![Monitor ML](images/tut-8jpg)
-
-The model can be found here: <https://console.cloud.google.com/mlengine/models?project=wellio-kadaif>
-![Monitor ML](images/log-2.jpg)
-![Monitor ML](images/log-3.jpg)
 
 #### 2.3 Monitor the training
 
