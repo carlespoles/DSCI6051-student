@@ -184,6 +184,15 @@ The model can be found here: <https://console.cloud.google.com/mlengine/models?p
 ![Monitor ML](images/log-2.jpg)
 ![Monitor ML](images/log-3.jpg)
 
+To see all models on the cloud, we run on the command line:
+
+`gcloud ml-engine models list`
+
+which outputs:
+
+`NAME          DEFAULT_VERSION_NAME
+tasty_images  v1`
+
 ## 4. Making predictions.
 
 In this final step, we create a prediction locally, not in the cloud.
@@ -198,22 +207,31 @@ Since the image is passed via JSON, we have to encode the JPEG string first:
 
 `python -c 'import base64, sys, json; img = base64.b64encode(open(sys.argv[1], "rb").read()); print json.dumps({"key":"0", "image_bytes": {"b64": img}})' donald_trump.jpg &> request.json`
 
-Then
+Then, we make the prediction for the above image (already encoded before):
+
 `gcloud ml-engine predict --model tasty_images --json-instances request.json`
+
+![View of script](images/shell-10.jpg)
+
+![Monitor ML](images/tut-9.jpg)
+
+and the predictions:
 
 `KEY  PREDICTION  SCORES
 0    0           [0.8072742819786072, 0.19167515635490417, 0.0010505595710128546]`
 
-The prediction index (e.g. '1') corresponds to the label at that index in the 'label dict' used to construct the example set during preprocessing, and the score for each index is listed under SCORES. (The last element in the scores list is used for any example images that did not have an associated label).
+`KEY` means the order of the item (the image encoded) in the `request.json` object, which is `0` in this case, as we passed only 1 image. The `PREDICTION` index (`0` in this case) corresponds to the label at that index in the `dict.txt` (in this case, corresponds to `ok`), and the score for each index is listed under `SCORES`. (The last element in the scores list is used for any example images that did not have an associated label).
 
-So, that means that index 0 is the 'hugs' label, and index 1 is 'not-hugs'. Therefore, the prediction above indicates that the hedgehog is 'not-hugs', with score 0.9999591112136841.
-
-
-![Monitor ML](images/tut-9.jpg)
+In this example, index `0` is the `ok` label, and index `1` is `nok`. Therefore, the prediction above indicates that Donald Trump image is `ok`, with score `0.8072742819786072`.
 
 
 
-![View of script](images/shell-10.jpg)
+
+
+
+
+
+
 
 
 
