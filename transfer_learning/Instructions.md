@@ -178,7 +178,7 @@ Once completed, the script will create a version of it, indicating where it's de
 Next, the created version is set as the default one:
 
 ![View of script](images/shell-7.jpg)
-![Monitor ML](images/tut-8jpg)
+![Monitor ML](images/tut-8.jpg)
 
 The model can be found here: <https://console.cloud.google.com/mlengine/models?project=wellio-kadaif>
 ![Monitor ML](images/log-2.jpg)
@@ -186,10 +186,30 @@ The model can be found here: <https://console.cloud.google.com/mlengine/models?p
 
 ## 4. Making predictions.
 
-This step of the script will save the model created previously:
+In this final step, we create a prediction locally, not in the cloud.
 
-![View of script](images/shell-5.jpg)
-![Monitor ML](images/tut-7.jpg)
+We download an image from a bucket, which will be saved in the directory of this project.
+
+Since the image is passed via JSON, we have to encode the JPEG string first:
+
+`python -c 'import base64, sys, json; img = base64.b64encode(open(sys.argv[1], "rb").read()); print json.dumps({"key":"0", "image_bytes": {"b64": img}})' donald_trump.jpg &> request.json`
+
+Then
+`gcloud ml-engine predict --model tasty_images --json-instances request.json`
+
+`KEY  PREDICTION  SCORES
+0    0           [0.8072742819786072, 0.19167515635490417, 0.0010505595710128546]`
+
+The prediction index (e.g. '1') corresponds to the label at that index in the 'label dict' used to construct the example set during preprocessing, and the score for each index is listed under SCORES. (The last element in the scores list is used for any example images that did not have an associated label).
+
+So, that means that index 0 is the 'hugs' label, and index 1 is 'not-hugs'. Therefore, the prediction above indicates that the hedgehog is 'not-hugs', with score 0.9999591112136841.
+
+![View of script](images/shell-8.jpg)
+![Monitor ML](images/tut-9.jpg)
+
+![View of script](images/shell-9.jpg)
+
+![View of script](images/shell-10.jpg)
 
 Once completed, the script will create a version of it, indicating where it's deployed (`$GCS_PATH/training/model`):
 
