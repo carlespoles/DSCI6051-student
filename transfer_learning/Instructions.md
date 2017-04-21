@@ -8,8 +8,8 @@
     - [3. Saving and versioning the model](#3-saving-and-versioning-the-model).
     - [4. Making predictions](#4-making-predictions).
     - [5. Using Tensorboard](#5-using-tensorboard).
-    - [6. Using Flask to make predictions](#5-using-flask-to-make-predictions).
-    - [Appendix: Extending the project to multiclasses](#appendix-extending-the-project to multiclasses).
+    - [6. Using Flask to make predictions](#6-using-flask-to-make-predictions).
+    - [Appendix: Extending the project to multi-class images](#appendix-extending-the-project to multi-class-images).
 
 Using [Google Vision API](https://cloud.google.com/vision/) is a good resource to identify labels, or categories, for a given image. The problem can arise when we need to further classify your own images, in more specialized categories that the Google Vision API hasn't been trained on.
 
@@ -231,126 +231,15 @@ which translates to:
 
 and then visualize it in `http://localhost:6006/`
 
+## 6. Using Flask to make predictions.
+
+
+.
 
 
 
 
 
-
-
-
-
-
-#### 2.3 Monitor the training
-
-As the training runs, you should see the logs stream to STDOUT.  You can also view them with:
-
-```shell
-gcloud beta ml jobs stream-logs "$JOB_ID"
-```
-
-We can also monitor the progress of the training using [Tensorboard](https://www.tensorflow.org/how_tos/summaries_and_tensorboard/).  
-
-To do this, start up Tensorboard in a new shell (don't forget to activate your virtual environment), pointing it to the training logs in GCS:
-
-```shell
-tensorboard --logdir=$GCS_PATH/training
-```
-
-Then, visit `http://localhost:6006`.
-
-
-### 3. Prediction: Using the trained model
-
-For prediction, we don't want to separate the image preprocessing and inference into two separate steps, because we need to perform both in sequence for every image. Instead, we create a single TensorFlow graph that produces the image embedding and does the classification using the trained model in one step.
-
-After training, the saved model information will be in `$GCS_PATH/training/model`.
-
-Our next step is to tell Cloud ML that we want to use and serve that model.
-We do that via the following script, where `v1` is our model version name, and `hugs` is our model name.
-
-
-```shell
-./model.sh $GCS_PATH v1 hugs
-```
-
-The model is created first.  This only needs to happen once, and is done as follows:
-`gcloud beta ml models create <model_name>`
-
-Then, we create a 'version' of that model, based on the data in our model directory (`$GCS_PATH/training/model`), and set that version as the default.
-
-You can see what models and default versions we have in your project via:
-
-```shell
-gcloud beta ml models list
-```
-
-It will take a minute or so for the model version to start "serving".  Once our model is serving, we make prediction requests to it -- both from the command line and via the Cloud ML API.
-
-
-#### 3.1 Prediction from the command line using gcloud
-
-To make a prediction request from the command line, we need to encode the image(s) we want to send it into a json format.  See the `images_to_json.py` script for the details.  This command:
-
-```
-python images_to_json.py -o request.json <image1> <image2> ...
-```
-
-results in a `request.json` file with the encoded image info. Then, run this command:
-
-```shell
-gcloud beta ml predict --model $MODEL_NAME --json-instances request.json
-```
-
-You should see a result something along the lines of the following:
-
-```shell
-gcloud beta ml predict --model hugs --json-instances request.json
-KEY                             PREDICTION  SCORES
-prediction_images/hedgehog.jpg  1           [4.091006485396065e-05, 0.9999591112136841, 1.8843516969013763e-08]
-```
-
-The prediction index (e.g. '1') corresponds to the label at that index in the 'label dict' used to construct the example set during preprocessing,
-and the score for each index is listed under SCORES. (The last element in the scores list is used for any example images that did not have an associated label).
-
-The 'hugs' dataset label dict is here:
-
-```shell
-gsutil cat gs://oscon-tf-workshop-materials/transfer_learning/cloudml/hugs_photos/dict.txt
-```
-
-So, that means that index 0 is the 'hugs' label, and index 1 is 'not-hugs'.  Therefore, the prediction above indicates that the hedgehog is 'not-hugs', with score 0.9999591112136841.
-
-#### 3.2 Prediction using the Cloud ML API: A prediction web server
-
-We can also request predictions via the Cloud ML API, and the google api client libraries.
-We've included a little example web server that shows how to do this, and also makes it easy to see how a given image gets labeled.
-
-The web app lets you upload an image, and then it generates a json request containing the image, and sends that to the Cloud ML API.  In response, we get back prediction and score information, and display that on a result page.
-
-Run the web server according to the instructions in its [README](web_server).
-
-## Appendix: Running training locally
-
-If you want to run the training session locally (this can be useful for debugging), you will need to point the
-`GOOGLE_APPLICATION_CREDENTIALS` environment variable to a local service account credentials file like this:
-
-```shell
-export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials/file.json
-```
-
-Then initiate the local training like this, defining a local output path to use:
-
-```shell
-gcloud beta ml local train --package-path trainer/ --module-name trainer.task \
-    -- \
-    --max-steps 1000 \
-    --train_data_paths "$GCS_PATH/preproc/train*" \
-    --eval_data_paths "$GCS_PATH/preproc/eval*" \
-    --eval_set_size 19 \
-    --output_path output/
-```
-
-## Appendix: image sources
+## Extending the project to multi-class images.
 
 The source information for the 'hugs/no-hugs' images is here: gs://oscon-tf-workshop-materials/transfer_learning/hugs_photos_sources.csv.
