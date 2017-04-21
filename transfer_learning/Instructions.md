@@ -283,9 +283,20 @@ The prediction above indicates that the image `chicken.jpg` belong to the class 
 
 We open a browser window and run: `http://127.0.0.1:5000/`
 
+Click 'Choose file':
+
 ![View of flask](images/web-1.jpg)
+
+Click 'Upload':
+
 ![View of flask](images/web-2.jpg)
+
+View the prediction:
+
 ![View of flask](images/web-3.jpg)
+
+Other examples:
+
 ![View of flask](images/web-4.jpg)
 ![View of flask](images/web-5.jpg)
 ![View of flask](images/web-6.jpg)
