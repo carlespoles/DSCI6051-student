@@ -32,7 +32,7 @@ Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and fol
 
 2. Setup Datalab.
 
-Install Datalab https://cloud.google.com/datalab/docs/quickstarts and use zone=us-west1-a and project-id ‘wellio-kadaif’ options.
+Install Datalab https://cloud.google.com/datalab/docs/quickstarts and use zone=us-west1-a and project-id `wellio-kadaif` options.
 
 Here is a summary of all installed libraries in the anaconda environment:
 
