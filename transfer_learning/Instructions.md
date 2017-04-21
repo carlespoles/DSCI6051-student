@@ -253,23 +253,38 @@ The arguments are:
 `--project`: the project name given by Google when creating the project in Google Cloud.
 `--dict`: a text file where the labels are stored (same as `dict.txt` we used to preprocess images before).
 
-`(dsci6007) Admins-MacBook-Pro:web_server carles$ python predict_server.py --model_name tasty_images --project` `wellio-kadaif --dict static/dict.txt`
+`(dsci6007) Admins-MacBook-Pro:web_server carles$ python predict_server.py --model_name tasty_images --project`
+
+ `wellio-kadaif --dict static/dict.txt`
+
 `labels: ['ok', 'nok']`
+
  `* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)`
- ``* Restarting with stat`
+
+ `* Restarting with stat`
+
 `labels: ['ok', 'nok']`
- ``* Debugger is active!`
- ``* Debugger pin code: 279-854-597`
+
+ `* Debugger is active!`
+
+ `* Debugger pin code: 279-854-597`
+
 `upload file`
+
 `127.0.0.1 - - [20/Apr/2017 09:42:27] "GET / HTTP/1.1" 200 -`
+
 `upload file`
+
 `<FileStorage: u'00001.jpg' ('image/jpeg')>`
+
 `predictions: [{u'prediction': 0, u'key': u'static/00001.jpg', u'scores': [0.9745843410491943, 0.025380853563547134,` `3.4803269954863936e-05]}]`
 
+The prediction above indicates that the image `00001.jpg` belong to the class with label index `0`, which is `tasty`, and the score is `0.9745843410491943` (since the index of the label is `0`, we get the score with index `0`).
+
+![View of flask](images/web-1.jpg)
 
 
 
-
-## Extending the project to multi-class images.
+## Appendix: Extending the project to multi-class images.
 
 The source information for the 'hugs/no-hugs' images is here: gs://oscon-tf-workshop-materials/transfer_learning/hugs_photos_sources.csv.
