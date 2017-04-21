@@ -48,3 +48,5 @@ No GPUs were used as they are not available in Google Datalab. For data augmenta
 `11-tasty-images-CNN-data-augmentation-model-image-size-25.ipynb`
 
 `13-tasty-images-CNN-data-augmentation-model-image-100.ipynb`
+
+## 6 - Transfer learning.
