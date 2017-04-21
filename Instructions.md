@@ -28,3 +28,7 @@ The sizes used are 25, 50 and 100. The created data sets, ready to train a model
 Note that due to lack of enough computing resources, I was not able to pre-process the images to a bigger size (i.e 150 and bigger).
 
 This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
+
+## 5 - Training convolutional neural network models.
+
+5-tasty-images-CNN-model-initial.ipynb
