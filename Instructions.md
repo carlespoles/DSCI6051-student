@@ -40,3 +40,5 @@ This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
 `08-tasty-images-CNN-model-image-size-50-1.ipynb`
 
 `09-tasty-images-CNN-model-image-size-50-2.ipynb`
+
+`10-tasty-images-CNN-model-image-size-100.ipynb`
