@@ -313,6 +313,8 @@ The small differences to implement this multi-class scenario are:
 
 #### The dictionary text file (`dict.txt`) that contains the labels of our classes:
 
+![Flowers classification](images/flower-2.jpg)
+
 `daisy`
 
 `dandelion`
