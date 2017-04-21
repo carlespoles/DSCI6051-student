@@ -22,7 +22,19 @@ Wellio's Architecture.
 
 Environment set up.
 -------------------
-An anaconda environment with python 2.7 needs to be set up in order to connect to Google's Cloud. Here are the libraries installed:
+An anaconda environment with python 2.7 needs to be set up in order to connect to Google's Cloud.
+
+After that, we need to:
+
+1. Setup Google Cloud Platform SDK.
+
+Install Google Cloud Platform SDK https://cloud.google.com/sdk/downloads and follow the instructions for `interactive installer`.
+
+2. Setup Datalab.
+
+Install Datalab https://cloud.google.com/datalab/docs/quickstarts and use zone=us-west1-a and project-id ‘wellio-kadaif’ options.
+
+Here is a summary of all installed libraries in the anaconda environment:
 
 ```
 ansicolors==1.0.2
