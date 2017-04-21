@@ -59,6 +59,10 @@ The following notebook train models with images resized to 25 using data augment
 
 `11-tasty-images-CNN-data-augmentation-model-image-size-25.ipynb`
 
+The following notebook train models with images resized to 50 using data augmentation.
+
+`12-tasty-images-CNN-data-augmentation-model-image-size-50.ipynb`
+
 The following notebook train models with images resized to 100 using data augmentation.
 
 `13-tasty-images-CNN-data-augmentation-model-image-100.ipynb`
