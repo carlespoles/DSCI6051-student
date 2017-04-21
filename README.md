@@ -19,3 +19,7 @@ Wellio's Architecture.
 ----------------------
 
 <img src='images/Wellio-Architecture.jpg' />
+
+All notebooks have been developed and run in Google's Cloud Datalab.
+
+Here is a [detailed description of each one](Instructions.md).
