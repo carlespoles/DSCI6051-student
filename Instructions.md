@@ -31,6 +31,8 @@ This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
 
 ## 5 - Training convolutional neural network models.
 
+No GPUs were used as they are not available in Google Datalab. For data augmentation only 10 epochs were performed as it can take more than a day to train a model.
+
 `05-tasty-images-CNN-model-initial-1.ipynb`
 
 `06-tasty-images-CNN-model-initial-2.ipynb`
