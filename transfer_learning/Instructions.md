@@ -219,6 +219,10 @@ If we want to predict multiple images from the command line, we would issue:
 
 `python images_to_json.py -o request.json <image1> <image2> ...`, which also results in a `request.json` object. Then, we will run again `gcloud ml-engine predict --model tasty_images --json-instances request.json` to view the predictions for all encoded images.
 
+In our case, since we have a `prediction_images` folder, for example:
+
+`python images_to_json.py -o request.json prediction_images/knife.jpg prediction_images/puppy2.jpg prediction_images/hedgehog.jpg`
+
 ## 5. Using Tensorboard.
 
 From the command line, we will run:
