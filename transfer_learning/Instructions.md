@@ -1,5 +1,5 @@
 
-# Classifying images using *transfer learning*.
+# Classifying images using transfer learning.
 
   - [Setup in Google Storage](#set-up-in-google-storage).
   - [Execution of the script](#execution-of-the-script).
