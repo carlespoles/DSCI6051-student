@@ -237,8 +237,34 @@ and then visualize it in `http://localhost:6006/`
 
 ## 6. Using Flask to make predictions.
 
+Run the server from the same virtual environment we have been using and make sure we have all of the web server requirements installed in that environment:
 
-.
+```shell
+pip install -r requirements.txt
+```
+
+Then, to start the web server, from the command line, go (`cd`) to the folder `web_server`, and run:
+
+`python predict_server.py --model_name tasty_images --project wellio-kadaif --dict static/dict.txt`
+
+The arguments are:
+
+`--model_name`: we pass the model name created before.
+`--project`: the project name given by Google when creating the project in Google Cloud.
+`--dict`: a text file where the labels are stored (same as `dict.txt` we used to preprocess images before).
+
+`(dsci6007) Admins-MacBook-Pro:web_server carles$ python predict_server.py --model_name tasty_images --project wellio-kadaif --dict static/dict.txt
+labels: ['ok', 'nok']
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+labels: ['ok', 'nok']
+ * Debugger is active!
+ * Debugger pin code: 279-854-597
+upload file
+127.0.0.1 - - [20/Apr/2017 09:42:27] "GET / HTTP/1.1" 200 -
+upload file
+<FileStorage: u'00001.jpg' ('image/jpeg')>
+predictions: [{u'prediction': 0, u'key': u'static/00001.jpg', u'scores': [0.9745843410491943, 0.025380853563547134, 3.4803269954863936e-05]}]`
 
 
 
