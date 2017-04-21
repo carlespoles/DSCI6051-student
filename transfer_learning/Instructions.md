@@ -4,21 +4,12 @@
   - [Setup in Google Storage](#set-up-in-google-storage).
   - [Execution of the script](#execution-of-the-script).
     - [1. Image preprocessing details](##1-image-preprocessing-details).
-    - [2. Training and monitoring the model](##2-training-and-monitoring-the-model).
-    - [3. Saving and versioning the model](##3-saving-and-versioning-the-model).
-    - [4. Making predictions](##4-making-predictions).
-
-  - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
-    - [1. Image Preprocessing](#1-image-preprocessing)
-      - [1.1 Deploy the preprocessing job to Cloud Dataflow](#11-deploy-the-preprocessing-job-to-cloud-dataflow)
-    - [2. Modeling: Training the classifier](#2-modeling-training-the-classifier)
-      - [2.1 For the workshop, use pre-generated TFRecords for training](#21-for-the-workshop-use-pre-generated-tfrecords-for-training)
-      - [2.2 Run the training script](#22-run-the-training-script)
-      - [2.3 Monitor the training](#23-monitor-the-training)
-    - [3. Prediction: Using the trained model](#3-prediction-using-the-trained-model)
-      - [3.1 Prediction from the command line using gcloud](#31-prediction-from-the-command-line-using-gcloud)
-      - [3.2 Prediction using the Cloud ML API: A prediction web server](#32-prediction-using-the-cloud-ml-api-a-prediction-web-server)
-  - [Appendix: Running training locally](#appendix-running-training-locally)
+    - [2. Training and monitoring the model](#2-training-and-monitoring-the-model).
+    - [3. Saving and versioning the model](#3-saving-and-versioning-the-model).
+    - [4. Making predictions](#4-making-predictions).
+    - [5. Using Tensorboard](#5-using-tensorboard).
+    - [6. Using Flask to make predictions](#5-using-flask-to-make-predictions).
+    - [Appendix: Extending the project to multiclasses](#appendix-extending-the-project to multiclasses).
 
 Using [Google Vision API](https://cloud.google.com/vision/) is a good resource to identify labels, or categories, for a given image. The problem can arise when we need to further classify your own images, in more specialized categories that the Google Vision API hasn't been trained on.
 
@@ -224,6 +215,21 @@ and the predictions:
 
 In this example, index `0` is the `ok` label, and index `1` is `nok`. Therefore, the prediction above indicates that Donald Trump image is `ok`, with score `0.8072742819786072`.
 
+If we want to predict multiple images from the command line, we would issue:
+
+`python images_to_json.py -o request.json <image1> <image2> ...`, which also results in a `request.json` object. Then, we will run again `gcloud ml-engine predict --model tasty_images --json-instances request.json` to view the predictions for all encoded images.
+
+## 5. Using Tensorboard.
+
+From the command line, we will run:
+
+`tensorboard --logdir=GCS_PATH/training`
+
+which translates to:
+
+`tensorboard --logdir=gs://wellio-kadaif-tasty-images-project-images/carles/tasty_images_carles_20170419_184854/training`
+
+and then visualize it in `http://localhost:6006/`
 
 
 
