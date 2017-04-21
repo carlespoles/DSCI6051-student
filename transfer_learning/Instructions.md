@@ -283,8 +283,8 @@ The prediction above indicates that the image `chicken.jpg` belong to the class 
 
 We open a browser window and run: `http://127.0.0.1:5000/`
 
-![View of flask](images/web-2.jpg)
 ![View of flask](images/web-1.jpg)
+![View of flask](images/web-2.jpg)
 ![View of flask](images/web-3.jpg)
 ![View of flask](images/web-4.jpg)
 ![View of flask](images/web-5.jpg)
