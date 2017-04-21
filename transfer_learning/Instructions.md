@@ -6,6 +6,7 @@
     - [1. Image preprocessing details](##1-image-preprocessing-details).
     - [2. Training and monitoring the model](##2-training-and-monitoring-the-model).
     - [3. Saving and versioning the model](##3-saving-and-versioning-the-model).
+    - [4. Making predictions](##4-making-predictions).
 
   - [The "tasty/not-tasty" image classification task](###the "tasty/not-tasty" image classification task)
     - [1. Image Preprocessing](#1-image-preprocessing)
@@ -165,7 +166,7 @@ Once the model has been trained, it will be saved in the next step of the script
 
 ## 3. Saving and versioning the model.
 
-The next step of the script will save the model created previously:
+This step of the script will save the model created previously:
 
 ![View of script](images/shell-5.jpg)
 ![Monitor ML](images/tut-7.jpg)
@@ -177,6 +178,27 @@ Once completed, the script will create a version of it, indicating where it's de
 Next, the created version is set as the default one:
 
 ![View of script](images/shell-7.jpg)
+![Monitor ML](images/tut-8jpg)
+
+The model can be found here: <https://console.cloud.google.com/mlengine/models?project=wellio-kadaif>
+![Monitor ML](images/log-2.jpg)
+![Monitor ML](images/log-3.jpg)
+
+## 4. Making predictions.
+
+This step of the script will save the model created previously:
+
+![View of script](images/shell-5.jpg)
+![Monitor ML](images/tut-7.jpg)
+
+Once completed, the script will create a version of it, indicating where it's deployed (`$GCS_PATH/training/model`):
+
+![View of script](images/shell-6.jpg)
+
+Next, the created version is set as the default one:
+
+![View of script](images/shell-7.jpg)
+![Monitor ML](images/tut-8jpg)
 
 The model can be found here: <https://console.cloud.google.com/mlengine/models?project=wellio-kadaif>
 ![Monitor ML](images/log-2.jpg)
