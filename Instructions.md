@@ -77,4 +77,4 @@ In this case, we use `InceptionV3` and extract the features from the last layer.
 
 `15-transfer-learning-InceptionV3-models-2.ipynb`
 
-A full example of transfer learning in the cloud using `Tensorflow` and `InceptionV3` can be found under the `transfer_learning` folder.
+A full example of transfer learning in the cloud using `Tensorflow` and `InceptionV3` can be found in the [`transfer_learning`](transfer_learning) folder.
