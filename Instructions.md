@@ -11,3 +11,11 @@ Also, most of the food recipes acquired by Wellio are sourced from `food.com` an
 We will get 10,000 images from each site, totaling a balanced data set of 20,000 images.
 
 Images will be copied over a bucket in Google Cloud Storage as the storage in Datalab is ephemeral.
+
+This can be found in notebook `2-tasty-images-download-images.ipynb`.
+
+3 - Splitting images into a training and testing data sets.
+-----------------------------------------------------------
+This functionality has not been used for the project, but it can be useful and handy if required.
+
+This can be found on the notebook `3-tasty-images-create-train-test-split-images.ipynb`.
