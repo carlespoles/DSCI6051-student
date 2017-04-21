@@ -26,7 +26,7 @@ Environment set up.
 -------------------
 An anaconda environment with python 2.7 needs to be set up in order to connect to Google's Cloud.
 
-Here are instructions on how create an  environment(https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/).
+[Here are instructions on how create an  environment](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/).
 
 After that, we need to:
 
