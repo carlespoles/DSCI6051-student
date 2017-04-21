@@ -33,19 +33,33 @@ This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
 
 No GPUs were used as they are not available in Google Datalab. For data augmentation only 10 epochs were performed as it can take more than a day to train a model, and even 5 epochs for images of bigger size.
 
+The following two notebooks were intended to train some convolutional neural network architectures with few images to check their performance.
+
+The architectures used can be found on `dl_functions.py` file under the `scripts` folder.
+
 `05-tasty-images-CNN-model-initial-1.ipynb`
 
 `06-tasty-images-CNN-model-initial-2.ipynb`
 
+The following notebook train models with images resized to 25.
+
 `07-tasty-images-CNN-model-image-size-25.ipynb`
+
+The following two notebooks train models with images resized to 50.
 
 `08-tasty-images-CNN-model-image-size-50-1.ipynb`
 
 `09-tasty-images-CNN-model-image-size-50-2.ipynb`
 
+The following notebook train models with images resized to 100.
+
 `10-tasty-images-CNN-model-image-size-100.ipynb`
 
+The following notebook train models with images resized to 25 using data augmentation.
+
 `11-tasty-images-CNN-data-augmentation-model-image-size-25.ipynb`
+
+The following notebook train models with images resized to 100 using data augmentation.
 
 `13-tasty-images-CNN-data-augmentation-model-image-100.ipynb`
 
