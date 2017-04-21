@@ -240,10 +240,12 @@ and then visualize it in `http://localhost:6006/`
 ![View of tensorboard](images/t-3.jpg)
 ![View of tensorboard](images/t-4.jpg)
 ![View of tensorboard](images/t-5.jpg)
-![View of tensorboard](images/eval_set.png)
-![View of tensorboard](images/train.png)
-![View of tensorboard](images/train_set.png)
 ![View of tensorboard](images/t-6.jpg)
+![View of tensorboard](images/eval_train.png)
+
+![View of tensorboard](images/train.png)
+
+![View of tensorboard](images/train_set.png)
 ![View of tensorboard](images/t-7.jpg)
 ![View of tensorboard](images/t-8.jpg)
 ![View of tensorboard](images/t-9.jpg)
