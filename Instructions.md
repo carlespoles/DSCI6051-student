@@ -33,3 +33,4 @@ This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
 
 `5-tasty-images-CNN-model-initial-1.ipynb`
 `6-tasty-images-CNN-model-initial-2.ipynb`
+`7-tasty-images-CNN-model-image-size-25.ipynb`
