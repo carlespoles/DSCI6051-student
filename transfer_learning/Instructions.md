@@ -313,19 +313,19 @@ The small differences to implement this multi-class scenario are:
 
 #### The dictionary text file (`dict.txt`) that contains the labels of our classes:
 
-`daisy
-dandelion
-roses
-sunflowers
-tulips`
+`daisy`
+`dandelion`
+`roses`
+`sunflowers`
+`tulips`
 
 #### The `.csv` files used for training and validation:
 
-![Flowers classification](images/flower-2.jpg)
 ![Flowers classification](images/flower-3.jpg)
+![Flowers classification](images/flower-4.jpg)
 
 #### The `model.py` file under the `trainer` folder:
 
 change below to represent the new number of classes/labels. In this flowers case, would be 5.
 
-![Flowers classification](images/flower-4.jpg)
+![Flowers classification](images/flower-5.jpg)
