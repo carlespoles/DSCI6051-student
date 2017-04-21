@@ -9,7 +9,7 @@
     - [4. Making predictions](#4-making-predictions).
     - [5. Using Tensorboard](#5-using-tensorboard).
     - [6. Using Flask to make predictions](#6-using-flask-to-make-predictions).
-    - [Appendix: Extending the project to multi-class images](#appendix-extending-the-project to multi-class-images).
+    - [Appendix: Extending the project to multi-class images](#appendix-extending-the-project-to-multi-class-images).
 
 Using [Google Vision API](https://cloud.google.com/vision/) is a good resource to identify labels, or categories, for a given image. The problem can arise when we need to further classify your own images, in more specialized categories that the Google Vision API hasn't been trained on.
 
