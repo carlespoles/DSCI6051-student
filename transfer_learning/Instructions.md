@@ -281,23 +281,24 @@ The arguments are:
 
 The prediction above indicates that the image `chicken.jpg` belong to the class with label index `0`, which is `tasty`, and the score is `0.8883854746818542` (since the index of the label is `0`, we get the score with index `0`).
 
-We open a browser window and run: `http://127.0.0.1:5000/`
-
-Click 'Choose file':
+We open a browser window and enter: `http://127.0.0.1:5000/`
 
 ![View of flask](images/web-1.jpg)
 
-Click 'Upload':
+Click 'Choose file':
 
 ![View of flask](images/web-2.jpg)
 
-View the prediction:
+Click 'Upload':
 
 ![View of flask](images/web-3.jpg)
 
-Other examples:
+View the prediction:
 
 ![View of flask](images/web-4.jpg)
+
+Other examples:
+
 ![View of flask](images/web-5.jpg)
 ![View of flask](images/web-6.jpg)
 
