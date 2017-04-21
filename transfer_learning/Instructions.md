@@ -314,9 +314,13 @@ The small differences to implement this multi-class scenario are:
 #### The dictionary text file (`dict.txt`) that contains the labels of our classes:
 
 `daisy`
+
 `dandelion`
+
 `roses`
+
 `sunflowers`
+
 `tulips`
 
 #### The `.csv` files used for training and validation:
