@@ -235,6 +235,19 @@ which translates to:
 
 and then visualize it in `http://localhost:6006/`
 
+![View of tensorboard](images/t-1.jpg)
+![View of tensorboard](images/t-2.jpg)
+![View of tensorboard](images/t-3.jpg)
+![View of tensorboard](images/t-4.jpg)
+![View of tensorboard](images/t-5.jpg)
+![View of tensorboard](images/t-6.jpg)
+![View of tensorboard](images/t-7.jpg)
+![View of tensorboard](images/t-8.jpg)
+![View of tensorboard](images/t-9.jpg)
+![View of tensorboard](images/t-10.jpg)
+![View of tensorboard](images/t-11.jpg)
+![View of tensorboard](images/t-12.jpg)
+
 ## 6. Using Flask to make predictions.
 
 Run the server from the same virtual environment we have been using and make sure we have all of the web server requirements installed in that environment:
