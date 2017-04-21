@@ -52,3 +52,5 @@ No GPUs were used as they are not available in Google Datalab. For data augmenta
 ## 6 - Transfer learning.
 
 `14-transfer-learning-InceptionV3-data-prep-1.ipynb`
+
+`15-transfer-learning-InceptionV3-models-2.ipynb`
