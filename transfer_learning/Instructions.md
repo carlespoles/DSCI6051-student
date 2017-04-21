@@ -304,4 +304,28 @@ Other examples:
 
 ## Appendix: Extending the project to multi-class images.
 
-The source information for the 'hugs/no-hugs' images is here: gs://oscon-tf-workshop-materials/transfer_learning/hugs_photos_sources.csv.
+Using the flowers images from Google, it is a perfect example of multi-class image classification.
+The images can be found here: <https://console.cloud.google.com/storage/browser/cloud-ml-data/img/flower_photos/?authuser=0>
+
+![Flowers classification](images/flower-1.jpg)
+
+The small differences to implement this multi-class scenario are:
+
+#### The dictionary text file (`dict.txt`) that contains the labels of our classes:
+
+`daisy
+dandelion
+roses
+sunflowers
+tulips`
+
+#### The `.csv` files used for training and validation:
+
+![Flowers classification](images/flower-2.jpg)
+![Flowers classification](images/flower-3.jpg)
+
+#### The `model.py` file under the `trainer` folder:
+
+change below to represent the new number of classes/labels. In this flowers case, would be 5.
+
+![Flowers classification](images/flower-4.jpg)
