@@ -253,7 +253,7 @@ The arguments are:
 `--project`: the project name given by Google when creating the project in Google Cloud.
 `--dict`: a text file where the labels are stored (same as `dict.txt` we used to preprocess images before).
 
-`(dsci6007) Admins-MacBook-Pro:web_server carles$ python predict_server.py --model_name tasty_images --project`
+`(wellio) Admins-MacBook-Pro:web_server carles$ python predict_server.py --model_name tasty_images --project`
 
  `wellio-kadaif --dict static/dict.txt`
 
@@ -275,15 +275,19 @@ The arguments are:
 
 `upload file`
 
-`<FileStorage: u'00001.jpg' ('image/jpeg')>`
+`<FileStorage: u'chicken.jpg' ('image/jpeg')>`
 
-`predictions: [{u'prediction': 0, u'key': u'static/00001.jpg', u'scores': [0.9745843410491943, 0.025380853563547134,` `3.4803269954863936e-05]}]`
+`predictions: [{u'prediction': 0, u'key': u'static/chicken.jpg', u'scores': [0.8883854746818542, 0.11137621849775314, 0.0002382358507020399]}]`
 
-The prediction above indicates that the image `00001.jpg` belong to the class with label index `0`, which is `tasty`, and the score is `0.9745843410491943` (since the index of the label is `0`, we get the score with index `0`).
+The prediction above indicates that the image `chicken.jpg` belong to the class with label index `0`, which is `tasty`, and the score is `0.8883854746818542` (since the index of the label is `0`, we get the score with index `0`).
+
+We open a browser window and run: `http://127.0.0.1:5000/`
 
 ![View of flask](images/web-1.jpg)
-
-
+![View of flask](images/web-3.jpg)
+![View of flask](images/web-4.jpg)
+![View of flask](images/web-5.jpg)
+![View of flask](images/web-6.jpg)
 
 ## Appendix: Extending the project to multi-class images.
 
