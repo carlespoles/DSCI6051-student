@@ -33,31 +33,9 @@ This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
 
 No GPUs were used as they are not available in Google Datalab. For data augmentation only 10 epochs were performed as it can take more than a day to train a model, and even 5 epochs for images of bigger size.
 
-The following two notebooks were intended to train some convolutional neural network architectures with few images to check their performance.
-
 The architectures used can be found on `dl_functions.py` file under the `scripts` folder.
 
 Here are the diagrams of the architectures:
-
-<table width: 100%;" border="0" cellpadding="2"
-cellspacing="2">
-<thead>
-<tr>
-<td style="text-align: center; font-weight: bold;">First architecture.<br>
-</td>
-<td style="text-align: center; font-weight: bold;">Second architecture.<br>
-</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="vertical-align: top;"><img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' /><br>
-</td>
-<td style="vertical-align: top;"><img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' /><br>
-</td>
-</tr>
-</tbody>
-</table>
 
 ### First architecture.
 
@@ -65,7 +43,9 @@ cellspacing="2">
 
 ### Second architecture.
 
-<img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' align="top"/>
+<img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg'/>
+
+The following two notebooks were intended to train some convolutional neural network architectures with few images to check their performance.
 
 `05-tasty-images-CNN-model-initial-1.ipynb`
 
