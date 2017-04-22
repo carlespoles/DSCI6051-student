@@ -39,9 +39,9 @@ The architectures used can be found on `dl_functions.py` file under the `scripts
 
 Here are the diagrams of the architectures:
 
-<img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg.jpg' />
+<img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' />
 
-<img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg.jpg' />
+<img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' />
 
 `05-tasty-images-CNN-model-initial-1.ipynb`
 
