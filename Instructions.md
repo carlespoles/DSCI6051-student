@@ -39,7 +39,11 @@ The architectures used can be found on `dl_functions.py` file under the `scripts
 
 Here are the diagrams of the architectures:
 
+### First architecture.
+
 <img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' />
+
+### Second architecture.
 
 <img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' />
 
