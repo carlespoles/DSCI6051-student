@@ -39,6 +39,24 @@ The architectures used can be found on `dl_functions.py` file under the `scripts
 
 Here are the diagrams of the architectures:
 
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top; text-align: center;">### First architecture.<br>
+</td>
+<td style="vertical-align: top; text-align: center;">### Second architecture.<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top; text-align: center;"><img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' /><br>
+</td>
+<td style="vertical-align: top; text-align: center;"><img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' /><br>
+</td>
+</tr>
+</tbody>
+</table>
+
 ### First architecture.
 
 <img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' />
