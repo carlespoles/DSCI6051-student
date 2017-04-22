@@ -39,7 +39,7 @@ Here are the diagrams of the architectures:
 
 ### First architecture.
 
-<img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' />
+<img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' align='center' />
 
 ### Second architecture.
 
