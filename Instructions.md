@@ -63,7 +63,7 @@ cellspacing="2">
 
 ### Second architecture.
 
-<img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' />
+<img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' align="top"/>
 
 `05-tasty-images-CNN-model-initial-1.ipynb`
 
