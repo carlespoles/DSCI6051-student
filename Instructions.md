@@ -43,15 +43,15 @@ Here are the diagrams of the architectures:
 cellspacing="2">
 <tbody>
 <tr>
-<td style="vertical-align: top; text-align: center;">### First architecture.<br>
+<td style="vertical-align: top; text-align: center; font-weight: bold;">First architecture.<br>
 </td>
-<td style="vertical-align: top; text-align: center;">### Second architecture.<br>
+<td style="vertical-align: top; text-align: center; font-weight: bold;">Second architecture.<br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: center;"><img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' /><br>
+<td style="vertical-align: top;"><img src='diagrams_cnn_architectures/cnn_architecture_1_1.jpg' /><br>
 </td>
-<td style="vertical-align: top; text-align: center;"><img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' /><br>
+<td style="vertical-align: top;"><img src='diagrams_cnn_architectures/cnn_architecture_2_1.jpg' /><br>
 </td>
 </tr>
 </tbody>
