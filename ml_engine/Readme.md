@@ -16,7 +16,7 @@ REQUIRED_PACKAGES = [
   'keras==2.0.3',
 ]
 ```
-The job is submitted using the command line as it follows:
+The job is submitted using the command line as it follows (make sure we are in the `trainer` directory):
 
 ```
 gcloud ml-engine jobs submit training $JOB_NAME \
@@ -35,9 +35,9 @@ gcloud ml-engine jobs submit training $JOB_NAME \
 
 Note that in our case, we will specify:
 
-`OUTPUT_PATH = gs://wellio-kadaif-tasty-images-project-pre-processed-images/ml-engine`
+`OUTPUT_PATH = gs://wellio-kadaif-tasty-images-ml-engine/jobs`
 
-(the folder `ml-engine` needs to already exist in the bucket `gs://wellio-kadaif-tasty-images-project-pre-processed-images`)
+(the folder `jobs` needs to already exist in the bucket `gs://wellio-kadaif-tasty-images-ml-engine`)
 
 `JOB_NAME` needs to be unique each time run this job, so it needs to be changed on the command line before submitting it.
 
@@ -49,7 +49,7 @@ Effectively, here is what submit in the command line:
 
 ```
 gcloud ml-engine jobs submit training 'job_image_classification_1' \
---job-dir 'gs://wellio-kadaif-tasty-images-project-pre-processed-images/ml-engine' \
+--job-dir 'gs://wellio-kadaif-tasty-images-ml-engine/jobs' \
 --runtime-version 1.0 \
 --module-name trainer.task \
 --package-path trainer/ \
@@ -57,6 +57,38 @@ gcloud ml-engine jobs submit training 'job_image_classification_1' \
 --config=trainer/config.yaml
 ```
 
+For example:
+
+```
+(wellio) Admins-MacBook-Pro:DSCI6051-student carles$ cd ml_engine/
+(wellio) Admins-MacBook-Pro:ml_engine carles$ ls
+Readme.md	images		setup.py	trainer
+(wellio) Admins-MacBook-Pro:ml_engine carles$ cd cd trainer/
+-bash: cd: cd: No such file or directory
+(wellio) Admins-MacBook-Pro:ml_engine carles$ gcloud ml-engine jobs submit training 'job_image_classification_1' \
+> --job-dir 'gs://wellio-kadaif-tasty-images-ml-engine/jobs' \
+> --runtime-version 1.0 \
+> --module-name trainer.task \
+> --package-path trainer/ \
+> --region 'us-east1' \
+> --config=trainer/config.yaml
+Job [job_image_classification_1] submitted successfully.
+Your job is still active. You may view the status of your job with the command
+
+  $ gcloud ml-engine jobs describe job_image_classification_1
+
+or continue streaming the logs with the command
+
+  $ gcloud ml-engine jobs stream-logs job_image_classification_1
+jobId: job_image_classification_1
+state: QUEUED
+(wellio) Admins-MacBook-Pro:ml_engine carles$
+```
+
 The job can be monitored using Google Cloud ML Engine GUI:
+
+<img src='images/ml_engine_0.jpg' />
+
+then, click on `view logs`:
 
 <img src='images/ml_engine.jpg' />

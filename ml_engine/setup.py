@@ -18,6 +18,8 @@ from setuptools import setup
 REQUIRED_PACKAGES = [
   'tensorflow==1.0.1',
   'keras==2.0.3',
+  'h5py==2.7.0',
+  'matplotlib==2.0.0',
 ]
 
 setup(
