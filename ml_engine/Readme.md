@@ -29,6 +29,10 @@ gcloud ml-engine jobs submit training $JOB_NAME \
 -- \
 ```
 
+`--module-name trainer.task` specifies the script we need to run: it's the `task` file under the `trainer` folder. If we had a different script to run under the `trainer` folder, for example `another_script.py`, then we would change that part of the `ml-engine` job as:
+
+`--module-name trainer.another_script`
+
 Note that in our case, we will specify:
 
 `OUTPUT_PATH = gs://wellio-kadaif-tasty-images-project-pre-processed-images/ml-engine`
@@ -54,4 +58,5 @@ gcloud ml-engine jobs submit training 'job_image_classification_1' \
 ```
 
 The job can be monitored using Google Cloud ML Engine GUI:
+
 <img src='images/ml_engine.jpg' />
