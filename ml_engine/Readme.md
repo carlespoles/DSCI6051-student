@@ -29,7 +29,7 @@ gcloud ml-engine jobs submit training $JOB_NAME \
 -- \
 ```
 
-`--module-name trainer.task` specifies the script we need to run: it's the `task` file under the `trainer` folder. If we had a different script to run under the `trainer` folder, for example `another_script.py`, then we would change that part of the `ml-engine` job as:
+`--module-name trainer.task` specifies the script we need to run: it's the `task` file under the `trainer` folder. If we had a different script to run under the `trainer` folder instead of `task,py`, for example `another_script.py`, then we would change that part of the `ml-engine` job as:
 
 `--module-name trainer.another_script`
 
