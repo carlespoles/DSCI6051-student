@@ -67,16 +67,24 @@ def cnn_model_v_1(IMG_SIZE):
 
 
 # Load data from pickle file located on a bucket.
-with file_io.FileIO("gs://wellio-kadaif-tasty-images-project-pre-processed-images/pre_processed_images/image_data_20000_100.txt", 'r') as f:
+# with file_io.FileIO("gs://wellio-kadaif-tasty-images-project-pre-processed-images/pre_processed_images/image_data_20000_100.txt", 'r') as f:
+#     X, y = pickle.load(f)
+
+with file_io.FileIO("gs://wellio-kadaif-tasty-images-project-pre-processed-images/pre_processed_images/image_data_20000_25.txt", 'r') as f:
     X, y = pickle.load(f)
 
-datagen = ImageDataGenerator(rotation_range=40,
-                             width_shift_range=0.1,
-                             height_shift_range=0.1,
-                             shear_range=0.4,
-                             zoom_range=0.1,
-                             horizontal_flip=False,
-                             fill_mode='nearest')
+# datagen = ImageDataGenerator(rotation_range=40,
+#                              width_shift_range=0.1,
+#                              height_shift_range=0.1,
+#                              shear_range=0.4,
+#                              zoom_range=0.1,
+#                              horizontal_flip=False,
+#                              fill_mode='nearest')
+
+datagen = ImageDataGenerator(
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True)
 
 # Creating a train, test split.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,
@@ -101,7 +109,8 @@ datagen.fit(X_train)
 
 # Creating an instance of a CNN model.
 # The image size is 100.
-IMG_SIZE = 100
+# IMG_SIZE = 100
+IMG_SIZE = 25
 
 model_1 = model_1 = cnn_model_v_1(IMG_SIZE)
 
