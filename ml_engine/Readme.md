@@ -85,6 +85,42 @@ state: QUEUED
 (wellio) Admins-MacBook-Pro:ml_engine carles$
 ```
 
+## 3 - Run job as bash command.
+
+As an alternative, we can run `submit_ml.sh` from the command line:
+
+`./submit_ml.sh`
+
+Here is an example:
+
+```
+(wellio) Admins-MacBook-Pro:ml_engine carles$ ./submit_ml.sh
+
+Using JOB_NAME:  job_image_classification_carles_20170425_085655
+Using OUTPUT_PATH:  gs://wellio-kadaif-tasty-images-ml-engine/jobs
+Using REGION:  us-east1
+
+gcloud ml-engine jobs submit training $JOB_NAME \
+--job-dir $OUTPUT_PATH \
+--runtime-version 1.0 \
+--module-name trainer.task \
+--package-path trainer/ \
+--region $REGION \
+--config=trainer/config.yaml
+Job [job_image_classification_carles_20170425_085655] submitted successfully.
+Your job is still active. You may view the status of your job with the command
+
+  $ gcloud ml-engine jobs describe job_image_classification_carles_20170425_085655
+
+or continue streaming the logs with the command
+
+  $ gcloud ml-engine jobs stream-logs job_image_classification_carles_20170425_085655
+jobId: job_image_classification_carles_20170425_085655
+state: QUEUED
+```
+
+Note that the file `submit_ml.sh` needs to have the right permissions: `chmod 755 submit_ml.sh`.
+
 The job can be monitored using Google Cloud ML Engine GUI:
 
 <img src='images/ml_engine_0.jpg' />
