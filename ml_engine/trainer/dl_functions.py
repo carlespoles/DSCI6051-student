@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import glob
-import IPython
+#import IPython
 import keras
 import matplotlib.pyplot as plt
 import pandas as pd
