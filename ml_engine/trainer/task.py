@@ -7,7 +7,7 @@ import glob
 import pickle
 import gzip
 import h5py
-import dl_functions
+#import dl_functions
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential, model_from_json
 from keras.layers import Dense, Dropout, Activation, Flatten
@@ -18,52 +18,52 @@ from keras.preprocessing.image import array_to_img, img_to_array, load_img
 from keras.callbacks import LearningRateScheduler, ModelCheckpoint
 from sklearn.metrics import confusion_matrix, roc_curve, roc_auc_score
 from sklearn.cross_validation import train_test_split
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 #%matplotlib inline
 from tensorflow.python.lib.io import file_io
 
 
 # Defining an architecture.
-# def cnn_model_v_0(IMG_SIZE):
-#     global NUM_CLASSES
-#     NUM_CLASSES = 2
-#     model = Sequential()
-#     model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3),
-#                             activation='relu'))
-#     model.add(Convolution2D(32, (3, 3), activation='relu'))
-#     model.add(MaxPooling2D(pool_size=(2, 2)))
-#     model.add(Dropout(0.2))
-#     model.add(Convolution2D(64, (3, 3), activation='relu'))
-#     model.add(MaxPooling2D(pool_size=(2, 2)))
-#     model.add(Dropout(0.2))
-#     model.add(Convolution2D(128, (3, 3), activation='relu'))
-#     model.add(MaxPooling2D(pool_size=(2, 2)))
-#     model.add(Dropout(0.2))
-#     model.add(Flatten())
-#     model.add(Dense(512, activation='relu'))
-#     model.add(Dropout(0.5))
-#     model.add(Dense(NUM_CLASSES, activation='softmax'))
-#
-#     return model
-#
-#
-# def cnn_model_v_1(IMG_SIZE):
-#     global NUM_CLASSES
-#     NUM_CLASSES = 2
-#     model = Sequential()
-#     model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3),
-#                             activation='relu'))
-#     model.add(MaxPooling2D(pool_size=(2, 2)))
-#     model.add(Convolution2D(32, (3, 3), activation='relu'))
-#     model.add(MaxPooling2D(pool_size=(2, 2)))
-#     model.add(Convolution2D(64, (3, 3), activation='relu'))
-#     model.add(MaxPooling2D(pool_size=(2, 2)))
-#     model.add(Flatten())
-#     model.add(Dense(64, activation='relu'))
-#     model.add(Dropout(0.5))
-#     model.add(Dense(NUM_CLASSES, activation='softmax'))
-#
-#     return model
+def cnn_model_v_0(IMG_SIZE):
+    global NUM_CLASSES
+    NUM_CLASSES = 2
+    model = Sequential()
+    model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3),
+                            activation='relu'))
+    model.add(Convolution2D(32, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(128, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
+    model.add(Flatten())
+    model.add(Dense(512, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(NUM_CLASSES, activation='softmax'))
+
+    return model
+
+
+def cnn_model_v_1(IMG_SIZE):
+    global NUM_CLASSES
+    NUM_CLASSES = 2
+    model = Sequential()
+    model.add(Convolution2D(32, (3, 3), input_shape=(IMG_SIZE, IMG_SIZE, 3),
+                            activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Convolution2D(32, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Convolution2D(64, (3, 3), activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Flatten())
+    model.add(Dense(64, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(NUM_CLASSES, activation='softmax'))
+
+    return model
 
 
 # Load data from pickle file located on a bucket.
@@ -101,9 +101,9 @@ datagen.fit(X_train)
 
 # Creating an instance of a CNN model.
 # The image size is 100.
-IMG_SIZE = 25
+IMG_SIZE = 100
 
-model_1 = model_1 = dl_functions.cnn_model_v_1(IMG_SIZE)
+model_1 = model_1 = cnn_model_v_1(IMG_SIZE)
 
 model_1.compile(loss='binary_crossentropy', optimizer='rmsprop',
                 metrics=['accuracy'])
@@ -127,17 +127,17 @@ for i in model_1.predict(X_test):
 print("AUC: {:.2%}\n".format(roc_auc_score(y_test, predicted_images)))
 
 # Creating a confusion matrix.
-plt.figure(figsize=(8, 8))
-cf = dl_functions.show_confusion_matrix(confusion_matrix(y_test, predicted_images), ['Class 0', 'Class 1'])
-plt.savefig('confusion_matrix.png')
+# plt.figure(figsize=(8, 8))
+# cf = dl_functions.show_confusion_matrix(confusion_matrix(y_test, predicted_images), ['Class 0', 'Class 1'])
+# plt.savefig('confusion_matrix.png')
 
 # List of probabilities
 predictions_probability = model_1.predict_proba(X_test)
 
 # Creating ROC curve.
-plt.figure(figsize=(7, 7))
-rc = dl_functions.plot_roc(y_test, predictions_probability[:,1], "CNN - " + str(len(model_1.layers)) + " layers | # images: " + str(len(X)) + " | image size: " + str(IMG_SIZE), "Tasty Food Images")
-plt.savefig('roc_curve.png')
+# plt.figure(figsize=(7, 7))
+# rc = dl_functions.plot_roc(y_test, predictions_probability[:,1], "CNN - " + str(len(model_1.layers)) + " layers | # images: " + str(len(X)) + " | image size: " + str(IMG_SIZE), "Tasty Food Images")
+# plt.savefig('roc_curve.png')
 # model.save('model.h5')
 # job_dir='gs://kadaif.getwellio.com'
 #
