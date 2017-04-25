@@ -6,7 +6,6 @@ import IPython
 import keras
 import matplotlib.pyplot as plt
 import pandas as pd
-from IPython.display import display
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential, model_from_json
 from keras.layers import Dense, Dropout, Activation, Flatten
@@ -15,7 +14,7 @@ from keras.optimizers import SGD
 from keras.utils import np_utils
 from keras.preprocessing.image import load_img, img_to_array, array_to_img
 from keras.callbacks import LearningRateScheduler, ModelCheckpoint
-from skimage import io, color, exposure, transform
+#from skimage import io, color, exposure, transform
 from sklearn.metrics import confusion_matrix, roc_curve
 from sklearn.cross_validation import train_test_split
 
