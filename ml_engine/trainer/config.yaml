@@ -1,0 +1,10 @@
+trainingInput:
+  # Use a cluster with many workers and a few parameter servers.
+  # https://cloud.google.com/ml-engine/docs/concepts/training-overview#scale_tier
+  scaleTier: CUSTOM
+  # For GPUs:
+  # https://cloud.google.com/ml-engine/docs/how-tos/using-gpus
+  # Use 'standard_gpu' to give your task access to a single GPU.
+  # Use 'complex_model_m_gpu' to give your task access to four GPUs.
+  # Use 'complex_model_l_gpu' to give your task access to eight GPUs.
+  masterType: complex_model_l_gpu
