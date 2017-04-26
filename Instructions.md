@@ -75,7 +75,11 @@ The following notebook train models with images resized to 50 using data augment
 
 The following notebook train models with images resized to 100 using data augmentation.
 
-`13-tasty-images-CNN-data-augmentation-model-image-100.ipynb`
+`13-tasty-images-CNN-data-augmentation-model-image-100-1.ipynb`
+
+Experiment was repeated again (I forgot to save the model in the previous notebook):
+
+`14-tasty-images-CNN-data-augmentation-model-image-100-2.ipynb`
 
 ## 6 - Transfer learning.
 
@@ -83,8 +87,8 @@ The following two notebooks were run locally instead of Google Datalab due to is
 
 In this case, we use `InceptionV3` and extract the features from the last layer. First, we pre-process the images (they were downloaded locally from the cloud), and then we fit some machine learning models, like logistic regression.
 
-`14-transfer-learning-InceptionV3-data-prep-1.ipynb`
+`15-transfer-learning-InceptionV3-data-prep-1.ipynb`
 
-`15-transfer-learning-InceptionV3-models-2.ipynb`
+`16-transfer-learning-InceptionV3-models-2.ipynb`
 
 A full example of transfer learning in the cloud using `Tensorflow` and `InceptionV3` can be found in the [`transfer_learning`](transfer_learning) folder.
