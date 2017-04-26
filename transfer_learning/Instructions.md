@@ -15,7 +15,7 @@ Using [Google Vision API](https://cloud.google.com/vision/) is a good resource t
 
 This project shows how an existing neural network can be used to accomplish the above task using *transfer learning* which bootstraps an existing model to reduce the effort needed to learn something new.
 
-The 'Inception v3' architecture model trained to classify images against 1,000 different 'ImageNet' categories, and using its penultimate "bottleneck" layer, is used to train train a new top layer that can recognize other classes of images, like "tasty" or "not-tasty" in this project.
+The 'Inception v3' architecture model trained to classify images against 1,000 different 'ImageNet' categories, and using its penultimate "bottleneck" layer, is used to train a new top layer that can recognize other classes of images, like "tasty" or "not-tasty" in this project.
 
 The new top layer does not need to be very complex, and that we typically don't need much data or much
 training of this new model, to get good results for our new image classifications.
