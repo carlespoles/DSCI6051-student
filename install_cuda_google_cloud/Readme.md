@@ -167,6 +167,18 @@ sudo pip install --upgrade $TF_BINARY_URL
 sudo pip install keras
 ```
 
+**NOTE: THE TENSORFLOW BINARIES ARE NOT THE LATEST TENSORFLOW RELEASE.**
+**AFTER SOME EXPERIMENTATION, IT'S ADVISABLE NOT TO INSTALL TENSORFLOW THAT WAY**
+**SOME PYTHON LIBRARIES LIKE PICKLE WON'T WORK PROPERLY.**
+**UNTIL NEW BINARIES ARE AVAILABLE, USE INSTEAD:**
+
+```
+sudo pip install tensorflow-gpu
+sudo pip install keras
+```
+
+**AS A RESULT, THE NEXT SECTION WON'T WORK (TENSORFLOW/KERASCOMPILING WITH CUDA).**
+
 ## 10 - TEST IF TENSORFLOW/KERAS IS WORKING WITH CUDA. FROM THE CLOUD INSTANCE, RUN THE FOLLOWING:
 
 ```
@@ -286,3 +298,29 @@ I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library
 I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcuda.so.1 locally
 I tensorflow/stream_executor/dso_loader.cc:111] successfully opened CUDA library libcurand.so locally
 ```
+
+## 17 - SCRIPTS FOR GPU INSTANCE CREATION:
+
+This script will create a GPU instance on Google Cloud: `gpu_google_cloud_setup.sh`.
+
+Make sure to change the permissions by `chmod 755 gpu_google_cloud_setup.sh`.
+
+Then, in the `wellio` environment, run from the command line: `./gpu_google_cloud_setup.sh`
+
+After the instance is created (you will be notified by the script), log into the instance:
+
+```
+$gcloud compute ssh gpu-images --zone us-east1-d
+```
+
+From the local Mac, `scp` the other script (`gpu_google_cloud_tensorflow.sh`) to the instance, for example:
+
+```
+scp -i .ssh/google_compute_engine ~/Desktop/gpu_google_cloud_tensorflow.sh 35.185.49.209:
+```
+
+Make sure to change the permissions by `chmod 755 gpu_google_cloud_tensorflow.sh`.
+
+From the instance command line, run: `./gpu_google_cloud_tensorflow.sh`.
+
+You may need to respond to a prompt when installing `pandas`.
