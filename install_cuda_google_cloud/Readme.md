@@ -272,6 +272,8 @@ RUN THE CELL. YOU SHOULD SEE:
 
 `Using TensorFlow backend.`
 
+<img src ='images/jupyter-0.jpg' />
+
 <img src ='images/jupyter-google-cloud.jpg' />
 
 YOU SHOULD ALSO SEE FROM THE COMMAND LINE OF THE CLOUD INSTANCE:
