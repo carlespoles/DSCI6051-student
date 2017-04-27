@@ -155,3 +155,5 @@ widgetsnbextension==2.0.0
 All notebooks have been developed and run in Google's Cloud Datalab.
 
 Here is a [detailed description of each one](Instructions.md).
+
+A tutorial has been create to [use GPUs with Jupyter notebooks by creating a virtual instance in Google Cloud](install_cuda_google_cloud).
