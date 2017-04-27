@@ -322,3 +322,5 @@ scp -i .ssh/google_compute_engine ~/Desktop/gpu_google_cloud_tensorflow.sh 35.18
 Make sure to change the permissions by `chmod 755 gpu_google_cloud_tensorflow.sh`.
 
 From the instance command line, run: `./gpu_google_cloud_tensorflow.sh`.
+
+You will still need to manually perform the above steps 13, 14 and 15.
