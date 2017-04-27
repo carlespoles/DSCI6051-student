@@ -21,7 +21,7 @@ Admins-MBP:~ carles$ source activate wellio
 $gcloud beta compute instances create gpu-images --machine-type n1-highmem-8 --zone us-east1-d --accelerator type=nvidia-tesla-k80,count=4 --image-family ubuntu-1604-lts --image-project ubuntu-os-cloud --boot-disk-size 200GB --maintenance-policy TERMINATE --restart-on-failure
 ```
 
-NOTE THAT WE CREATE AN INSTANCE WITH 4 GPUs IN THIS EXAMPLE (`count=4`) WITH AN UBUNTU IMAGE ON A MACHINE TYPE `--machine-type n1-highmem-8`. AS OF NOW, GPUs IN THE U.S. ONLY AVAILABLE IN `--zone us-east1-d`.
+NOTE THAT WE CREATE AN INSTANCE WITH 4 GPUs IN THIS EXAMPLE (`count=4`) WITH AN UBUNTU IMAGE ON A MACHINE TYPE `--machine-type n1-highmem-8`. AS OF NOW, GPUs IN THE U.S. ONLY AVAILABLE IN `--zone us-east1-d`. THE NAME OF THE INSTANCE WE GIVE IS `gpu-images`.
 
 THIS IS THE OUTPUT:
 
