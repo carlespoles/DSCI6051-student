@@ -99,6 +99,8 @@ https://pypi.python.org/pypi/google-cloud-storage
 
 https://cloud.google.com/storage/docs/xml-api/gspythonlibrary
 
+https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/read-write-to-cloud-storage
+
 https://googlecloudplatform.github.io/google-cloud-python/stable/storage-client.html
 
 http://stackoverflow.com/questions/36314797/write-a-pandas-dataframe-to-google-cloud-storage-or-bigquery
