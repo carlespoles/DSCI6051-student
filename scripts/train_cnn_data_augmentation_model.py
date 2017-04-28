@@ -263,7 +263,7 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
     # Creating an instance of a CNN model.
     IMG_SIZE = int(IMG_SIZE)
     NUM_EPOCHS = int(NUM_EPOCHS)
-    model_1 = model_1 = cnn_model_v_1(IMG_SIZE)
+    model_1 = cnn_model_v_1(IMG_SIZE)
 
     model_1.compile(loss='binary_crossentropy', optimizer='rmsprop',
                     metrics=['accuracy'])
