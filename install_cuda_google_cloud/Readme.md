@@ -99,7 +99,7 @@ source ~/.bashrc
 IN THIS CASE, I HAVE DOWNLOADED IN THE DOWNLOADS FOLDER. ALSO, THE IP ADDRESS OF THE INSTANCE WILL BE DIFFERENT (EXTERNAL IP ADDRESS).
 
 ```
-$scp -i .ssh/google_compute_engine ~/Downloads/cudnn-8.0-linux-x64-v5.1.tgz 35.185.122.94:
+$scp -i ~/.ssh/google_compute_engine ~/Downloads/cudnn-8.0-linux-x64-v5.1.tgz 35.185.122.94:
 ```
 
 ## 7 - BACK TO THE COMMAND LINE AT THE CLOUD INSTANCE, RUN THE FOLLOWING COMMANDS ONE BY ONE:
@@ -260,7 +260,7 @@ c.NotebookApp.token = ''
 NOTE THAT WE WILL USE PORT 8899, AND THAT WE SPECIFY THE EXTERNAL IP ADDRESS OF THE CLOUD INSTANCE WITH OUR USER NAME: carles@35.185.122.94
 
 ```
-$ssh -i .ssh/google_compute_engine -L 8899:localhost:8888 carles@35.185.122.94
+$ssh -i ~/.ssh/google_compute_engine -L 8899:localhost:8888 carles@35.185.122.94
 ```
 
 ## 15 - FROM THE COMMAND LINE OF THE CLOUD INSTANCE RUN THE FOLLOWING COMMAND:
@@ -319,7 +319,7 @@ $gcloud compute ssh gpu-images --zone us-east1-d
 From the local Mac, `scp` the other script (`gpu_google_cloud_tensorflow.sh`) to the instance, for example:
 
 ```
-scp -i .ssh/google_compute_engine ~/Desktop/gpu_google_cloud_tensorflow.sh 35.185.49.209:
+scp -i ~/.ssh/google_compute_engine ~/Desktop/gpu_google_cloud_tensorflow.sh 35.185.49.209:
 ```
 
 Make sure to change the permissions by `chmod 755 gpu_google_cloud_tensorflow.sh`.
