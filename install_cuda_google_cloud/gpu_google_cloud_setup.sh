@@ -14,7 +14,11 @@ echo "Number of GPUs: " $GPU_COUNT
 echo "Machine OS: " $OS
 echo "Machine disk size: " $DISK_SIZE
 
+# To delete instance:
 # gcloud compute instances delete $MACHINE_NAME
+
+# Note that line --scopes gives permissions to the machine to access buckets, etc.
+# Otherwise, when trying to save files, it would throw a permissions error (http 403).
 
 gcloud beta compute instances create $MACHINE_NAME \
   --machine-type $MACHINE_TYPE \
@@ -22,6 +26,7 @@ gcloud beta compute instances create $MACHINE_NAME \
   --accelerator type=nvidia-tesla-k80,count=$GPU_COUNT \
   --image-family $OS \
   --image-project ubuntu-os-cloud \
+  --scopes bigquery,datastore,logging-write,storage-full,https://www.googleapis.com/auth/pubsub \
   --boot-disk-size $DISK_SIZE \
   --maintenance-policy TERMINATE \
   --restart-on-failure

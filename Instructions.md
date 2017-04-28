@@ -92,3 +92,17 @@ In this case, we use `InceptionV3` and extract the features from the last layer.
 `16-transfer-learning-InceptionV3-models-2.ipynb`
 
 A full example of transfer learning in the cloud using `Tensorflow` and `InceptionV3` can be found in the [`transfer_learning`](transfer_learning) folder.
+
+## 7 - Google Storage API documentation.
+
+https://pypi.python.org/pypi/google-cloud-storage
+
+https://cloud.google.com/storage/docs/xml-api/gspythonlibrary
+
+https://googlecloudplatform.github.io/google-cloud-python/stable/storage-client.html
+
+http://stackoverflow.com/questions/36314797/write-a-pandas-dataframe-to-google-cloud-storage-or-bigquery
+
+http://stackoverflow.com/questions/36837909/access-google-cloud-storage-bucket-from-other-project-using-python
+
+https://gorka.eguileor.com/python_gcs_client/
