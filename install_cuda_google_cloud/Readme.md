@@ -221,6 +221,8 @@ YOU SHOULD BE THE ABOVE MESSAGES IF TENSORFLOW IS WORKING WITH CUDA.
 $sudo pip install pandas h5py sklearn
 
 $sudo apt-get install python-matplotlib
+
+$sudo pip install --upgrade google-cloud-storage
 ```
 
 ## 12 - FROM THE COMMAND LINE OF THE CLOUD INSTANCE RUN THE FOLLOWING COMMAND:

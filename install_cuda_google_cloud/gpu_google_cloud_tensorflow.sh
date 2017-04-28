@@ -77,6 +77,8 @@ sudo pip install pandas h5py sklearn
 
 sudo apt-get install python-matplotlib -y
 
+sudo pip install --upgrade google-cloud-storage
+
 jupyter notebook --generate-config
 
 # Note the location of an output like:
