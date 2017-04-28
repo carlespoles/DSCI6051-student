@@ -292,7 +292,8 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
 
     with open(file_name_1, "w") as f:
         f.write('CNN number of layers: ' + str(len(model_1.layers)))
-        f.write('\nNumber of images: ' + str(len(X)))
+        # f.write('\nNumber of images: ' + str(len(X)))
+        f.write('\nNumber of images: {:0,.0f}'.format(len(X)))
         f.write('\nImage size: ' + str(IMG_SIZE))
         f.write('\nNumber of epochs: ' + str(NUM_EPOCHS))
         f.write('\nTest loss: {:0,.4f}'.format(score[0]))
@@ -371,7 +372,8 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
 
     with open(file_name_2, "w") as f:
         f.write('CNN number of layers: ' + str(len(model_2.layers)))
-        f.write('\nNumber of images: ' + str(len(X)))
+        # f.write('\nNumber of images: ' + str(len(X)))
+        f.write('\nNumber of images: {:0,.0f}'.format(len(X)))
         f.write('\nImage size: ' + str(IMG_SIZE))
         f.write('\nNumber of epochs: ' + str(NUM_EPOCHS))
         f.write('\nTest loss: {:0,.4f}'.format(score[0]))
