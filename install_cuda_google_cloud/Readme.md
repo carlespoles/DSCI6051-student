@@ -330,4 +330,4 @@ From the instance command line, run: `./gpu_google_cloud_tensorflow.sh`.
 
 You will still need to manually perform the above steps 13, 14 and 15.
 
-[Here are two scripts](scripts) that have been run using GPUs instances (`train_cnn_model.py` and `train_cnn_data_augmentation_model.py`).
+[Here are two scripts](../scripts) that have been run using GPUs instances (`train_cnn_model.py` and `train_cnn_data_augmentation_model.py`).
