@@ -1,0 +1,6 @@
+CNN number of layers: 14
+Number of images: 20000
+Image size: 25
+Test loss: 0.3305
+Test accuracy: 85.55%
+AUC: 85.57%
