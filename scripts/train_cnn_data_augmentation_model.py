@@ -300,9 +300,10 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
         f.write('\nTest accuracy: {:.2%}'.format(score[1]))
         f.write("\nAUC: {:.2%}\n".format(roc_auc_score(y_test, predicted_images)))
 
-    # with file_io.FileIO(file_name, mode='r') as input_f:
-    #     with file_io.FileIO(results_dir + '/' + file_name, mode='w+') as output_f:
-    #         output_f.write(input_f.read())
+    # Sending file to bucket.
+    with file_io.FileIO(file_name_1, mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + file_name_1, mode='w+') as output_f:
+            output_f.write(input_f.read())
 
     model_name_1 = file_name = "CNN_" + str(len(model_1.layers)) + "_layers_number_images_" + str(len(X)) + "_image_size_" + str(IMG_SIZE) + '_data_augmentation'
 
@@ -310,6 +311,11 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
     plt.figure(figsize=(9, 9))
     cf = show_confusion_matrix(confusion_matrix(y_test, predicted_images), ['Class 0', 'Class 1'])
     plt.savefig(model_name_1 + '_confusion_matrix.png')
+
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_1 + '_confusion_matrix.png', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_1 + '_confusion_matrix.png', mode='w+') as output_f:
+            output_f.write(input_f.read())
 
     # List of probabilities.
     predictions_probability = model_1.predict_proba(X_test)
@@ -319,9 +325,24 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
     rc = plot_roc(y_test, predictions_probability[:,1], "CNN Data Augm. - " + str(len(model_1.layers)) + " layers | # images: " + str(len(X)) + " | image size: " + str(IMG_SIZE), "Tasty Food Images")
     plt.savefig(model_name_1 + '_roc_curve.png')
 
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_1 + '_roc_curve.png', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_1 + '_roc_curve.png', mode='w+') as output_f:
+            output_f.write(input_f.read())
+
     # Saving model and model weights.
     model_1.save(model_name_1 + '.h5')
     model_1.save_weights(model_name_1 + '_weights.h5')
+
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_1 + '.h5', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_1 + '.h5', mode='w+') as output_f:
+            output_f.write(input_f.read())
+
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_1 + '_weights.h5', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_1 + '_weights.h5', mode='w+') as output_f:
+            output_f.write(input_f.read())
 
     # Train model with different architecture.
     # Creating a train, test split.
@@ -380,9 +401,10 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
         f.write('\nTest accuracy: {:.2%}'.format(score[1]))
         f.write("\nAUC: {:.2%}\n".format(roc_auc_score(y_test, predicted_images)))
 
-    # with file_io.FileIO(file_name, mode='r') as input_f:
-    #     with file_io.FileIO(results_dir + '/' + file_name, mode='w+') as output_f:
-    #         output_f.write(input_f.read())
+    # Sending file to bucket.
+    with file_io.FileIO(file_name_2, mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + file_name_2, mode='w+') as output_f:
+            output_f.write(input_f.read())
 
     model_name_2 = file_name = "CNN_" + str(len(model_2.layers)) + "_layers_number_images_" + str(len(X)) + "_image_size_" + str(IMG_SIZE) + '_data_augmentation'
 
@@ -390,6 +412,11 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
     plt.figure(figsize=(9, 9))
     cf = show_confusion_matrix(confusion_matrix(y_test, predicted_images), ['Class 0', 'Class 1'])
     plt.savefig(model_name_2 + '_confusion_matrix.png')
+
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_2 + '_confusion_matrix.png', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_2 + '_confusion_matrix.png', mode='w+') as output_f:
+            output_f.write(input_f.read())
 
     # List of probabilities.
     predictions_probability = model_2.predict_proba(X_test)
@@ -399,9 +426,24 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
     rc = plot_roc(y_test, predictions_probability[:,1], "CNN Data Augm. - " + str(len(model_2.layers)) + " layers | # images: " + str(len(X)) + " | image size: " + str(IMG_SIZE), "Tasty Food Images")
     plt.savefig(model_name_2 + '_roc_curve.png')
 
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_2 + '_roc_curve.png', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_2 + '_roc_curve.png', mode='w+') as output_f:
+            output_f.write(input_f.read())
+
     # Saving model and model weights.
     model_2.save(model_name_2 + '.h5')
     model_2.save_weights(model_name_2 + '_weights.h5')
+
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_2 + '.h5', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_2 + '.h5', mode='w+') as output_f:
+            output_f.write(input_f.read())
+
+    # Sending file to bucket.
+    with file_io.FileIO(model_name_2 + '_weights.h5', mode='r') as input_f:
+        with file_io.FileIO(results_dir + '/' + model_name_2 + '_weights.h5', mode='w+') as output_f:
+            output_f.write(input_f.read())
 
 
 if __name__ == '__main__':
