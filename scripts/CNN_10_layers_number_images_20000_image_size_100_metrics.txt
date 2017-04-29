@@ -1,0 +1,7 @@
+CNN number of layers: 10
+Number of images: 20,000
+Image size: 100
+Number of epochs: 100
+Test loss: 0.9767
+Test accuracy: 82.43%
+AUC: 82.48%
