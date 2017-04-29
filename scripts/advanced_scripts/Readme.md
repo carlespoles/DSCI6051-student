@@ -67,3 +67,6 @@ To delete this instance use:
 
 ```
 gcloud compute instances delete gpu-sspyder --zone=us-east1-d
+```
+
+## 3 - Remember to `chmod 755` the `.sh` scripts.
