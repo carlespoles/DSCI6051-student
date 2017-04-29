@@ -31,7 +31,7 @@ This can be found in the notebook `4-tasty-images-pre-processing-images.ipynb`.
 
 ## 5 - Training convolutional neural network models.
 
-No GPUs were used as they are not available in Google Datalab. For data augmentation only 10 epochs were performed as it can take more than a day to train a model, and even 5 epochs for images of bigger size.
+Google Datalab does not support GPUs. For data augmentation only 10 epochs were performed as it can take more than a day to train a model, and even 5 epochs for images of bigger size.
 
 The architectures used can be found on `dl_functions.py` file under the `scripts` folder.
 
@@ -108,3 +108,19 @@ http://stackoverflow.com/questions/36314797/write-a-pandas-dataframe-to-google-c
 http://stackoverflow.com/questions/36837909/access-google-cloud-storage-bucket-from-other-project-using-python
 
 https://gorka.eguileor.com/python_gcs_client/
+
+## 8 - Example Create CPU Instance.
+
+Only if a instance is created via command line, it will accessible using Google Datalab:
+
+```
+datalab create --machine-type n1-standard-4 name_of_your_instance
+```
+
+where `name_of_your_instance` is the name you want to give to it.
+
+A list of available instances can be found using the following command:
+
+```
+gcloud compute machine-types list
+```
