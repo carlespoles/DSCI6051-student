@@ -8,4 +8,4 @@ gpu-sspyder --machine-type n1-standard-2 \
 --boot-disk-size 200GB \
 --maintenance-policy TERMINATE \
 --restart-on-failure \
---metadata-from-file startup-script=docker.sh
+--metadata-from-file startup-script=install-docker.sh
