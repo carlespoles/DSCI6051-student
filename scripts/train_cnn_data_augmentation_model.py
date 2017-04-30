@@ -406,7 +406,7 @@ def train_models(IMG_SIZE, NUM_EPOCHS):
         with file_io.FileIO(results_dir + '/' + file_name_2, mode='w+') as output_f:
             output_f.write(input_f.read())
 
-    model_name_2 = file_name = "CNN_" + str(len(model_2.layers)) + "_layers_number_images_" + str(len(X)) + "_image_size_" + str(IMG_SIZE) + '_data_augmentation'
+    model_name_2 = "CNN_" + str(len(model_2.layers)) + "_layers_number_images_" + str(len(X)) + "_image_size_" + str(IMG_SIZE) + '_data_augmentation'
 
     # Creating a confusion matrix.
     plt.figure(figsize=(9, 9))
