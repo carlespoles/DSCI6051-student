@@ -1,0 +1,54 @@
+// Data Flow
+digraph {
+	graph [rankdir=LR]
+	label = "Capstone - Google Cloud - InceptionV3 Transfer Learning"
+		subgraph cluster_0 {
+			node [color=white style=filled]
+			style=filled
+			color=dimgray
+			label = "Google Cloud"
+				Storage [shape=octagon]
+		}
+		subgraph cluster_1 {
+			node [color=white style=filled]
+			style=filled
+			color=dimgray
+			label = "Google Cloud"
+				Dataflow [shape=octagon]
+		}
+		subgraph cluster_2 {
+			node [color=white style=filled]
+			style=filled
+			color=dimgray
+			label = "Google Cloud"
+				"ML Cloud" [shape=octagon]
+		}
+		subgraph cluster_3 {
+			node [color=white style=filled]
+			style=filled
+			color=dimgray
+			label = "Google Cloud"
+				"ML Cloud version (part 1)" [shape=octagon]
+		}
+		subgraph cluster_4 {
+			node [color=white style=filled]
+			style=filled
+			color=dimgray
+			label = "Google Cloud"
+				"ML Cloud version (part 2)" [shape=octagon]
+		}
+		"food.com" [shape=doubleoctagon]
+		"epicurious.com" [shape=doubleoctagon]
+		"SSH client" [shape=parallelogram]
+		"Web Client" [shape=parallelogram]
+			"food.com" -> Storage [label=Download]
+			"epicurious.com" -> Storage [label=Download]
+			Storage -> Dataflow [label="(1) Apache Beam"]
+			Dataflow -> Storage [label="(2) Embeddings"]
+			Storage -> "ML Cloud" [label="(3) Embeddings - Train"]
+			"ML Cloud" -> "ML Cloud version (part 1)" [label="(4) store model"]
+			"ML Cloud version (part 2)" -> Storage [label="(5) computational graph"]
+			Storage -> "Web Client" [label="(6) HTTP/Tensorboard"]
+			"ML Cloud version (part 2)" -> "Web Client" [label="(7) HTTP/Flask (predictions)"]
+			"ML Cloud version (part 2)" -> "SSH client" [label="(7) predictions"]
+}
