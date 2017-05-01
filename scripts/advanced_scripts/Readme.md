@@ -1,3 +1,5 @@
+The scripts of this folder were developed by Erik Andrejko (Wellio's CTO) using my initial scripts.
+
 ## 1 - Setup Datalab.
 
 Install Datalab https://cloud.google.com/datalab/docs/quickstarts and use zone=us-west1-a and project-id ‘wellio-kadaif’ options		  Install Datalab https://cloud.google.com/datalab/docs/quickstarts and use zone=us-west1-a and project-id ‘wellio-kadaif’ options.
