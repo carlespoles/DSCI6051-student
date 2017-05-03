@@ -16,7 +16,7 @@ API for prediction, using the google api client libraries. It lets the user
 upload an image, then encodes that image and sends off the prediction request,
 then displays the results.
 It uses the default version of the specified model.  Some of the web app's
-UI is hardwired for the "hugs" image set, but would be easy to modify for other
+UI is hardwired for the "tasty" image set, but would be easy to modify for other
 models.
 See the README.md for how to start the server.
 """
@@ -47,6 +47,7 @@ labels = None
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
