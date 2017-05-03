@@ -223,6 +223,15 @@ def cnn_model_v_1(IMG_SIZE):
     return model
 
 
+def save_file_bucket(file_name, bucket):
+    '''
+    To save files created locally to a Google Storage bucket.
+    '''
+    with file_io.FileIO(file_name, mode='r') as input_f:
+        with file_io.FileIO(bucket + '/' + file_name, mode='w+') as output_f:
+            output_f.write(input_f.read())
+
+
 def train_models(IMG_SIZE, NUM_EPOCHS):
     # Load data from pickle file located on a bucket.
     with file_io.FileIO('gs://wellio-kadaif-tasty-images-project-pre-processed-images/pre_processed_images/image_data_20000_' + IMG_SIZE + '.txt', 'r') as f:
