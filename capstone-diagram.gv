@@ -37,12 +37,21 @@ digraph {
 			label = "Google Cloud"
 				"ML Cloud version (part 2)" [shape=octagon]
 		}
+		subgraph cluster_5 {
+			node [color=white style=filled]
+			style=filled
+			color=dimgray
+			label = "Google Cloud"
+				BigQuery [shape=octagon]
+		}
 		"food.com" [shape=doubleoctagon]
 		"epicurious.com" [shape=doubleoctagon]
 		"SSH client" [shape=parallelogram]
 		"Web Client" [shape=parallelogram]
 			"food.com" -> Storage [label=Download]
 			"epicurious.com" -> Storage [label=Download]
+			BigQuery -> "epicurious.com" [label=URLs]
+			BigQuery -> "food.com" [label=URLs]
 			Storage -> Dataflow [label="(1) Apache Beam"]
 			Dataflow -> Storage [label="(2) Embeddings"]
 			Storage -> "ML Cloud" [label="(3) Embeddings - Train"]
