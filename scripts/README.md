@@ -1,6 +1,6 @@
 # Usage of scripts.
 
-`train_cnn_model.py`, `plot_cnn_models.py` and `train_cnn_data_augmentation_model.py` need to be `scp` to a GPU virtual instance and be run from the command line as for example:
+`train_cnn_model.py`, `plot_cnn_models.py`, `plot_all_cnn_models.py` and `train_cnn_data_augmentation_model.py` need to be `scp` to a GPU virtual instance and be run from the command line as for example:
 
 ```
 python train_cnn_model.py 25 50
@@ -19,6 +19,19 @@ In the case of `plot_cnn_models.py` we only pass the image size as argument:
 ```
 python plot_cnn_models.py 25
 ```
+
+For `plot_all_cnn_models.py` we don't need to pass any parameter.
+
+USAGE:
+======
+
+`train_cnn_model.py` creates statistics a confusion matrix and a ROC curve for a CNN architecture and a given image size.
+
+`train_cnn_data_augmentation_model.py` similar as above, but for the case of data augmentation.
+
+`plot_cnn_models.py` creates a ROC curve for all architectures for a given image size.
+
+`plot_all_cnn_models.py` creates a ROC curve for all architectures and all image sizes.
 
 NOTE that the image size available are 25, 50 and 100, which corresponds to the available pickle files of preprocessed images.
 
