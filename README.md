@@ -13,14 +13,18 @@ As a user I can search for recipes and get back recipes that have appealing imag
 
 Tech Use Case.
 --------------
-Design an algorithm that classifies images of recipes to appealing/not appealing.
+Design a convolutional neural network architecture that classifies images of recipes to appealing/not appealing.
 
 <img src='images/w-1.jpg' />
+
+<!--
 
 Wellio's Architecture.
 ----------------------
 
 <img src='images/Wellio-Architecture.jpg' />
+
+-->
 
 Environment set up.
 -------------------
