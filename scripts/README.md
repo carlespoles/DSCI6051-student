@@ -1,6 +1,6 @@
 # Usage of scripts.
 
-`train_cnn_model.py` and `train_cnn_data_augmentation_model.py` need to be `scp` to a GPU virtual instance and be run from the command line as for example:
+`train_cnn_model.py`, `plot_cnn_models.py` and `train_cnn_data_augmentation_model.py` need to be `scp` to a GPU virtual instance and be run from the command line as for example:
 
 ```
 python train_cnn_model.py 25 50
@@ -13,6 +13,12 @@ python train_cnn_data_augmentation_model.py 25 50
 ```
 
 where the **first argument** is the image size (25 in the examples above) and the **second argument** is the number of epochs to train the models (50 in the examples above).
+
+In the case of `plot_cnn_models.py` we only pass the image size as argument:
+
+```
+python plot_cnn_models.py 25
+```
 
 NOTE that the image size available are 25, 50 and 100, which corresponds to the available pickle files of preprocessed images.
 
