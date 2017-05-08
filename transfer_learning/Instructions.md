@@ -255,6 +255,8 @@ and then visualize it in `http://localhost:6006/`
 
 ![View of tensorboard](images/gif-1.gif)
 
+![View of tensorboard](images/gif-2.gif)
+
 ## 6. Using Flask to make predictions.
 
 Run the server from the same virtual environment we have been using and make sure we have all of the web server requirements installed in that environment:
