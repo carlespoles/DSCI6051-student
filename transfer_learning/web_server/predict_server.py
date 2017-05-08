@@ -82,7 +82,8 @@ def upload_file():
             return redirect(url_for('show_result',
                                     filename=filename,
                                     label=label,
-                                    score=score))
+                                    score='{:0,.2f}'.format(score*100)))
+                                    #score=score))
 
     return render_template('index.html')
 
