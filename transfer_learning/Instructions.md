@@ -324,6 +324,7 @@ Other examples:
 ![View of flask](images/web-5.jpg)
 ![View of flask](images/web-6.jpg)
 ![View of flask](images/web-7.jpg)
+![View of flask](images/web-8.jpg)
 
 ## Appendix: Extending the project to multi-class images.
 
