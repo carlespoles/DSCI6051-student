@@ -5,6 +5,8 @@ This project consists in building an image classifier for food images for [welli
 
 Transfer learning using the `InceptionV3` architecture has been implemented and can be found on the [`transfer_learning`](transfer_learning) folder.
 
+<img src='capstone-diagram.png' />
+
 Wellio’s recommendation system allows a user to ask for recipe through a conversational interface. When retrieving the search results, Wellio ranks them using various criteria. Wellio has noticed that their customers tend to choose recipes that are more visually appealing when the results are displayed. Hence, Wellio need to enable the search to also rank on appearance of the recipe.
 
 Product Use Case.
