@@ -134,3 +134,9 @@ A list of available instances can be found using the following command:
 ```
 gcloud compute machine-types list
 ```
+
+You can connect to the above created instance by running this command:
+
+```
+gcloud connect name_of_your_instance
+```
